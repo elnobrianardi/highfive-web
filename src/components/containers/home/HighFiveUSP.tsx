@@ -98,7 +98,7 @@ const HighFiveUSP = () => {
             <div className="px-4 px-lg-5">
               <div className="ms-lg-auto section__content" style={{ maxWidth: "600px" }}>
                 <span className="sub-title">
-                HIGH FIVE USP
+                OUR EDGE
                 <i className="fa-solid fa-arrow-right"></i>
               </span>
                 <h2 className="title title-anim">Why High Five</h2>
