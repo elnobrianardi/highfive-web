@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "public/images/logo-dark.jpeg";
+import logo from "public/images/logo-white.jpeg";
 
 interface HeaderProps {
   openNav: boolean;
@@ -34,7 +34,7 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
           <div className="offcanvas-menu__header nav-fade">
             <div className="logo">
               <Link href="/" onClick={closeNav}>
-                <Image src={logo} alt="Image" title="Image" priority />
+                <Image src={logo} alt="Image" title="Image" priority width={100} style={{ borderRadius: "25%"}}/>
               </Link>
             </div>
             <button

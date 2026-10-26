@@ -29,9 +29,9 @@ const Footer = () => {
                   <i className="fa-sharp fa-solid fa-phone-volume"></i>
                   (406) 555-0120
                 </Link>
-                <Link href="mailto:info@xpovio.com">
+                <Link href="mailto:info@highfive.com">
                   <i className="fa-sharp fa-solid fa-envelope"></i>
-                  info@xpovio.com
+                  info@highfive.com
                 </Link>
               </div>
               <div className="footer__cta text-start">
