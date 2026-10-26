@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "public/images/logo.png";
+import logo from "public/images/logo-dark.jpeg";
 import Offcanvas from "./Offcanvas";
 
 interface HeaderProps {

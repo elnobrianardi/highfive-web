@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import logo from "public/images/logo.png";
-import logoLight from "public/images/logo-light.png";
+import logo from "public/images/logo-dark.jpeg";
+import logoLight from "public/images/logo-white.jpeg";
 import Offcanvas from "./Offcanvas";
 
 interface HeaderProps {

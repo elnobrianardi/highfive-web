@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "public/images/logo.png";
+import logo from "public/images/logo-white.jpeg";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="col-12 col-lg-5 col-xl-6">
             <div className="footer__single">
               <Link href="/" className="title-anim">
-                High Five
+                <Image src={logo} alt="Image" width={100} style={{ borderRadius: "20%"}}/>
               </Link>
               <div className="footer__single-meta">
                 <Link

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "public/images/logo.png";
-import logoLight from "public/images/logo-light.png";
+import logo from "public/images/logo-dark.jpeg";
+import logoLight from "public/images/logo-white.jpeg";
 import Offcanvas from "./Offcanvas";
 
 interface HeaderProps {
@@ -38,7 +38,7 @@ const Header = ({ openNav, handleNav, setOpenNav }: HeaderProps) => {
     scrolled ? " navbar-active" : " "
   } ${defaultClasses}`;
 
-  let logoSrc = logo;
+  let logoSrc = logoLight;
 
   const router = useRouter();
   if (router.pathname === "/index-light") {
@@ -55,7 +55,7 @@ const Header = ({ openNav, handleNav, setOpenNav }: HeaderProps) => {
                 <nav className="navbar p-0">
                   <div className="navbar__logo">
                     <Link href="/" aria-label="go to home" className="title-anim">
-                      High Five
+                      <Image src={logoSrc} alt="logo" title="logo" width={100} />
                     </Link>
                   </div>
                   <div className="navbar__options">

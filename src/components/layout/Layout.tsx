@@ -177,7 +177,7 @@ const Layout = ({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
           rel="shortcut icon"
-          href="/images/favicon.png"
+          href="/images/logo-white.jpeg"
           type="image/x-icon"
         />
         <title>High Five | Influencer Marketing Agency</title>
