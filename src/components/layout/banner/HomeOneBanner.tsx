@@ -63,7 +63,7 @@ const HomeOneBanner = () => {
                   <p>
                     We are a full-service website design, development and
                     digital marketing company specializing in SEO, content
-                    marketing that grows brands.
+                    marketing that grows brands. bla bla 
                   </p>
                   <div className="cta section__content-cta">
                     <div className="single">
