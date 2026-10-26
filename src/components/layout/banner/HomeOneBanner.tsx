@@ -53,17 +53,17 @@ const HomeOneBanner = () => {
             <div className="col-12">
               <div className="banner__content">
                 <h1 className="text-uppercase text-start fw-9 mb-0 title-anim">
-                  We are
-                  <span className="text-stroke">creative</span>
+                  High Five
+                  <span className="text-stroke">Influencer</span>
                   <span className="interval">
-                    <i className="icon-arrow-top-right"></i> digital agency
+                    <i className="icon-arrow-top-right"></i> Marketing Agency
                   </span>
                 </h1>
                 <div className="banner__content-inner">
                   <p>
-                    We are a full-service website design, development and
-                    digital marketing company specializing in SEO, content
-                    marketing that grows brands. bla bla 
+                    High Five helps brands grow through strategic influencer
+                    marketing campaigns, connecting them with the right creators
+                    to drive real impact.
                   </p>
                   <div className="cta section__content-cta">
                     <div className="single">

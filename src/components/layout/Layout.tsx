@@ -180,11 +180,11 @@ const Layout = ({
           href="/images/favicon.png"
           type="image/x-icon"
         />
-        <title>Xpovio | Digital Agency Creative Portfolio Template</title>
-        <meta name="keywords" content="creative, agency, portfolio" />
+        <title>High Five | Influencer Marketing Agency</title>
+        <meta name="keywords" content="influencer marketing, creator campaign, brand placement" />
         <meta
           name="description"
-          content="Digital Agency Creative Portfolio Template"
+          content="High Five helps brands grow through strategic influencer marketing campaigns."
         />
       </Head>
       <div className={combinedClassName}>

@@ -14,8 +14,8 @@ const Footer = () => {
         <div className="row gaper">
           <div className="col-12 col-lg-5 col-xl-6">
             <div className="footer__single">
-              <Link href="/" className="logo">
-                <Image src={logo} alt="Image" />
+              <Link href="/" className="title-anim">
+                High Five
               </Link>
               <div className="footer__single-meta">
                 <Link
@@ -102,15 +102,8 @@ const Footer = () => {
                   <div className="footer__copyright-text text-center text-lg-start">
                     <p>
                       Copyright &copy;
-                      <span id="copyYear">{currentYear}</span> Xpovio by{" "}
-                      <Link
-                        
-                        href="https://themeforest.net/user/UltraDevs"
-                        target="_blank"
-                      >
-                        UltraDevs{" "}
-                      </Link>
-                      . All Rights Reserved
+                      <span id="copyYear">{currentYear}</span> High Five. All
+                      Rights Reserved
                     </p>
                   </div>
                 </div>

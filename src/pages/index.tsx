@@ -2,24 +2,24 @@ import React from "react";
 import Layout from "@/components/layout/Layout";
 import HomeOneBanner from "@/components/layout/banner/HomeOneBanner";
 import Agency from "@/components/containers/home/Agency";
-import PortfolioText from "@/components/containers/home/PortfolioText";
-import HomeOffer from "@/components/containers/home/HomeOffer";
-import HomeTestimonial from "@/components/containers/home/HomeTestimonial";
-import HomeBlog from "@/components/containers/home/HomeBlog";
+import AgencyRunningText from "@/components/containers/home/AgencyRunningText";
 import HomeSponsor from "@/components/containers/home/HomeSponsor";
-import NextPage from "@/components/containers/home/NextPage";
+import HighFiveService from "@/components/containers/home/HighFiveService";
+import HighFiveUSP from "@/components/containers/home/HighFiveUSP";
+import CaseStudyHome from "@/components/containers/home/CaseStudyHome";
+import ContactInfo from "@/components/containers/home/ContactInfo";
 
 const Home = () => {
   return (
-    <Layout header={1} footer={1} video={true}>
+    <Layout header={1} footer={1}>
       <HomeOneBanner />
       <Agency />
-      <PortfolioText />
-      <HomeOffer />
-      <HomeTestimonial />
-      <HomeBlog />
+      <AgencyRunningText />
       <HomeSponsor />
-      <NextPage />
+      <HighFiveService />
+      <HighFiveUSP />
+      <CaseStudyHome />
+      <ContactInfo />
     </Layout>
   );
 };
