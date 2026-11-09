@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "campaign-one",
+    "title": "Campaign One",
+    "image": "/images/case-study/Nutrijell2.png",
+    "logo": "/images/case-study/NutrijellLogo1.png",
+    "kpi": "2.3M",
+    "total": "8.3M",
+    "achievement": "360%"
+  },
+  {
+    "slug": "campaign-two",
+    "title": "Campaign Two",
+    "image": "/images/case-study/Pantene2.png",
+    "logo": "/images/case-study/PanteneLogo1.png",
+    "kpi": "50K",
+    "total": "100K",
+    "achievement": "200%"
+  },
+  {
+    "slug": "campaign-three",
+    "title": "Campaign Three",
+    "image": "/images/case-study/TopCoffee2.png",
+    "logo": "/images/case-study/TopCoffeeLogo1.png",
+    "kpi": "3.3M",
+    "total": "23.2M",
+    "achievement": "700%"
+  }
+]

@@ -3,8 +3,8 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import dotlarge from "public/images/agency/dot-large.png";
-import thumbone from "public/images/usp/thumbone.jpeg";
-import thumbtwo from "public/images/usp/thumbtwo.jpeg";
+import thumbone from "public/images/usp/thumbone.jpg";
+import thumbtwo from "public/images/usp/thumbtwo.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -145,7 +145,14 @@ const HighFiveUSP = () => {
               alt="High Five"
               className="fade-right"
               priority
-              style={{ maxWidth: "100%", height: "auto", width: "60%" }}
+              style={{
+                maxWidth: "100%",
+                width: "70%",
+                aspectRatio: "1 / 1",
+                height: "auto",
+                objectFit: "cover",
+                borderRadius: "20px",
+              }}
             />
           </div>
         </div>
@@ -156,14 +163,21 @@ const HighFiveUSP = () => {
               alt="High Five Influencers"
               className="fade-left"
               priority
-              style={{ maxWidth: "100%", height: "auto", width: "60%" }}
+              style={{
+                maxWidth: "100%",
+                width: "70%",
+                aspectRatio: "1 / 1",
+                height: "auto",
+                objectFit: "cover",
+                borderRadius: "20px",
+              }}
             />
           </div>
           <div className="col-12 col-lg-6">
             <div className="px-4 px-lg-5">
               <div className="me-lg-auto section__content" style={{ maxWidth: "600px" }}>
                 <h2 className="title title-anim">Influencers Persona</h2>
-                <div className="paragraph">
+                <div className="paragraph pb-4">
                   <p>
                     Diverse creator segments to match your brand&apos;s target
                     audience.

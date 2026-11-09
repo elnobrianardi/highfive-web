@@ -1,29 +1,183 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-import one from "public/images/banner/hero.webp";
-import two from "public/images/banner/hero.webp";
-import three from "public/images/banner/hero.webp";
-const caseStudies = [
-  {
-    slug: "campaign-one",
-    title: "Campaign One",
-    image: one,
-  },
-  {
-    slug: "campaign-two",
-    title: "Campaign Two",
-    image: two,
-  },
-  {
-    slug: "campaign-three",
-    title: "Campaign Three",
-    image: three,
-  },
-];
+import caseStudies from "@/data/caseStudies.json";
+
+type CaseStudy = {
+  slug: string;
+  title: string;
+  image: string;
+  logo: string;
+  kpi: string;
+  total: string;
+  achievement: string;
+};
+
+type CardTint = {
+  overlay: string;
+  text: string;
+  muted: string;
+  line: string;
+};
+
+const FALLBACK_TINT: CardTint = {
+  overlay: "rgba(0, 0, 0, 0.55)",
+  text: "#ffffff",
+  muted: "rgba(255, 255, 255, 0.72)",
+  line: "rgba(255, 255, 255, 0.25)",
+};
+
+// Ambil warna background dari aset logo (area tepi) untuk dipakai sebagai overlay
+const pickTintFromLogo = (img: HTMLImageElement): CardTint | null => {
+  try {
+    const size = 24;
+    const canvas = document.createElement("canvas");
+    canvas.width = size;
+    canvas.height = size;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+
+    ctx.drawImage(img, 0, 0, size, size);
+    const { data } = ctx.getImageData(0, 0, size, size);
+    const pad = Math.max(1, Math.round(size * 0.08));
+
+    let r = 0;
+    let g = 0;
+    let b = 0;
+    let count = 0;
+
+    for (let y = 0; y < size; y += 1) {
+      for (let x = 0; x < size; x += 1) {
+        const onEdge =
+          x < pad || x >= size - pad || y < pad || y >= size - pad;
+        if (!onEdge) continue;
+
+        const i = (y * size + x) * 4;
+        if (data[i + 3] < 128) continue;
+
+        r += data[i];
+        g += data[i + 1];
+        b += data[i + 2];
+        count += 1;
+      }
+    }
+
+    if (!count) return null;
+
+    r = Math.round(r / count);
+    g = Math.round(g / count);
+    b = Math.round(b / count);
+
+    const toLinear = (channel: number) => {
+      const v = channel / 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    };
+    const luminance =
+      0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+
+    // Pilih warna teks dengan kontras tertinggi terhadap warna overlay
+    const whiteContrast = 1.05 / (luminance + 0.05);
+    const darkContrast = (luminance + 0.05) / 0.0556;
+    const darkText = darkContrast >= whiteContrast;
+
+    return {
+      overlay: `rgba(${r}, ${g}, ${b}, 0.9)`,
+      text: darkText ? "rgba(17, 17, 17, 0.92)" : "#ffffff",
+      muted: darkText ? "rgba(17, 17, 17, 0.66)" : "rgba(255, 255, 255, 0.72)",
+      line: darkText ? "rgba(17, 17, 17, 0.18)" : "rgba(255, 255, 255, 0.25)",
+    };
+  } catch {
+    return null;
+  }
+};
+
+const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
+  const logoRef = useRef<HTMLImageElement>(null);
+  const [tint, setTint] = useState<CardTint>(FALLBACK_TINT);
+
+  useEffect(() => {
+    const img = logoRef.current;
+    if (!img) return;
+
+    let cancelled = false;
+    const update = () => {
+      if (cancelled) return;
+      const next = pickTintFromLogo(img);
+      if (next) setTint(next);
+    };
+
+    if (img.complete && img.naturalWidth > 0) {
+      update();
+    } else {
+      img.addEventListener("load", update, { once: true });
+    }
+
+    return () => {
+      cancelled = true;
+      img.removeEventListener("load", update);
+    };
+  }, [study.logo]);
+
+  return (
+    <div
+      className="portfolio__single portfolio__single--metrics topy-tilt fade-top"
+      style={
+        {
+          "--card-overlay": tint.overlay,
+          "--card-text": tint.text,
+          "--card-muted": tint.muted,
+          "--card-line": tint.line,
+        } as React.CSSProperties
+      }
+    >
+      <Link
+        href={`/case-study/${study.slug}`}
+        className="portfolio__single-media"
+      >
+        <Image
+          src={study.image}
+          alt={study.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          style={{ objectFit: "cover" }}
+        />
+      </Link>
+      <Link
+        href={`/case-study/${study.slug}`}
+        className="portfolio__single-content"
+      >
+        <span className="portfolio__single-logo">
+          <Image
+            ref={logoRef}
+            src={study.logo}
+            alt={`${study.title} logo`}
+            fill
+            sizes="140px"
+            style={{ objectFit: "contain", objectPosition: "left center" }}
+          />
+        </span>
+        <ul className="portfolio__single-metrics">
+          <li>
+            <span className="label">KPI Views</span>
+            <strong className="value">{study.kpi}</strong>
+          </li>
+          <li>
+            <span className="label">Total Views</span>
+            <strong className="value">{study.total}</strong>
+          </li>
+          <li>
+            <span className="label">Achievement Rate</span>
+            <strong className="value">{study.achievement}</strong>
+          </li>
+        </ul>
+      </Link>
+    </div>
+  );
+};
 
 const CaseStudyHome = () => {
   return (
@@ -131,16 +285,7 @@ const CaseStudyHome = () => {
         <div className="row gaper">
           {caseStudies.map((study) => (
             <div className="col-12 col-md-6 col-xl-4" key={study.slug}>
-              <div className="portfolio__single topy-tilt fade-top">
-                <Link href={`/case-study/${study.slug}`}>
-                  <Image src={study.image} alt={study.title} />
-                </Link>
-                <div className="portfolio__single-content">
-                  <Link href={`/case-study/${study.slug}`}>
-                    <h4>{study.title}</h4>
-                  </Link>
-                </div>
-              </div>
+              <CaseStudyCard study={study} />
             </div>
           ))}
         </div>
