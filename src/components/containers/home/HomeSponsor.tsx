@@ -3,23 +3,31 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-import one from "public/images/sponsor/one.png";
-import two from "public/images/sponsor/two.png";
-import three from "public/images/sponsor/three.png";
-import four from "public/images/sponsor/four.png";
-import five from "public/images/sponsor/five.png";
-import six from "public/images/sponsor/six.png";
+import clientLogos from "@/data/clientLogos.json";
+
+type ClientLogo = {
+  name: string;
+  logo: string;
+};
+
+// Ulang kalau jumlah logo sedikit supaya slider loop tetap penuh; untuk 27 logo cukup sekali
+const repeat = clientLogos.length
+  ? Math.max(1, Math.ceil(12 / clientLogos.length))
+  : 1;
+const slides = Array.from({ length: repeat }).flatMap(
+  () => clientLogos as ClientLogo[]
+);
 
 const HomeSponsor = () => {
   return (
-    <div className="sponsor section pb-0">
+    <div className="sponsor sponsor--clients section">
       <div className="container-fluid">
         <div className="row justify-content-center">
           <div className="col-12">
             <div className="sponsor__slider-w">
               <Swiper
-                slidesPerView={1}
-                spaceBetween={30}
+                slidesPerView={5}
+                spaceBetween={10}
                 slidesPerGroup={1}
                 speed={1200}
                 loop={true}
@@ -28,7 +36,7 @@ const HomeSponsor = () => {
                 centeredSlidesBounds={false}
                 modules={[Autoplay]}
                 autoplay={{
-                  delay: 3000,
+                  delay: 1500,
                   disableOnInteraction: false,
                   pauseOnMouseEnter: true,
                 }}
@@ -48,96 +56,19 @@ const HomeSponsor = () => {
                 }}
                 className="sponsor__slider"
               >
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={one} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={two} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={three} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={four} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={five} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={six} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={one} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={two} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={one} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={two} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={three} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={four} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={five} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={six} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={three} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={four} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={five} alt="Image" />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="sponsor__slider-item">
-                    <Image src={six} alt="Image" />
-                  </div>
-                </SwiperSlide>
+                {slides.map((client, index) => (
+                  <SwiperSlide key={`${client.name}-${index}`}>
+                    <div className="sponsor__slider-item">
+                      <Image
+                        src={client.logo}
+                        alt={client.name}
+                        fill
+                        sizes="(max-width: 576px) 50vw, (max-width: 1200px) 25vw, 16vw"
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </div>

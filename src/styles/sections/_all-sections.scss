@@ -1232,12 +1232,16 @@
 // 5.15 sponsor styles
 .sponsor {
   .sponsor__slider-item {
+    position: relative;
+    height: 65px;
     text-align: center;
+
     img {
+      width: 100%;
+      height: 100%;
       max-width: 100%;
-      height: auto;
-      margin-left: auto;
-      margin-right: auto;
+      object-fit: contain;
+      margin: 0px;
       opacity: 0.25;
       transition: var(--transition);
     }
@@ -1247,6 +1251,26 @@
     img {
       opacity: 1;
     }
+  }
+}
+
+// Home client logos strip: samakan bg dengan bg aset logo (#ef9559)
+.sponsor--clients {
+  background-color: #ef9559;
+  width: calc(100% - 40px);
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 60px 0px;
+  border-radius: 20px;
+
+  // tinggi logo dijaga kecil supaya aset resolusi rendah tidak pecah saat retina
+  .sponsor__slider-item {
+    height: 50px;
+  }
+
+  .lines .line {
+    background-color: rgba(255, 255, 255, 0.14);
   }
 }
 

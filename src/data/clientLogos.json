@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Client One",
+    "logo": "/images/sponsor/one.png"
+  },
+  {
+    "name": "Client Two",
+    "logo": "/images/sponsor/two.png"
+  },
+  {
+    "name": "Client Three",
+    "logo": "/images/sponsor/three.png"
+  },
+  {
+    "name": "Client Four",
+    "logo": "/images/sponsor/four.png"
+  },
+  {
+    "name": "Client Five",
+    "logo": "/images/sponsor/five.png"
+  },
+  {
+    "name": "Client Six",
+    "logo": "/images/sponsor/six.png"
+  }
+]
