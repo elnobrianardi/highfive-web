@@ -310,9 +310,15 @@
       }
     }
 
-    // case study card: logo-colored overlay + logo & KPI panel on hover
+    // case study card: compact square card, hover expands into a full panel
     &--metrics {
       border-radius: 20px;
+
+      // matikan garis sudut bawaan kartu portfolio
+      &::before,
+      &::after {
+        content: none;
+      }
 
       .portfolio__single-media {
         position: relative;
@@ -325,6 +331,7 @@
           height: 100%;
           min-height: 0px;
           object-fit: cover;
+          transition: transform 0.6s ease-in-out;
         }
 
         &::after {
@@ -338,31 +345,80 @@
         }
       }
 
-      &:hover {
-        .portfolio__single-media::after {
-          opacity: 1;
+      // lapisan gelap tambahan yang muncul saat hover
+      .portfolio__single-media::before {
+        content: "";
+        position: absolute;
+        inset: 0px;
+        z-index: 1;
+        pointer-events: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        background-image: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.1) 0%,
+          rgba(0, 0, 0, 0.4) 45%,
+          rgba(0, 0, 0, 0.85) 100%
+        );
+        opacity: 0;
+        transition: opacity var(--transition);
+      }
+
+      // panel menutupi seluruh kartu saat hover, jadi deskripsi panjang tidak sesak
+      .portfolio__single-content {
+        position: absolute;
+        inset: 0px;
+        z-index: 2;
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0px;
+        text-align: start;
+        background-color: transparent;
+        transform: none;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        // scrim dasar: ringan saat idle, cukup agar judul terbaca
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          z-index: 0;
+          pointer-events: none;
+          background-image: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0) 30%,
+            rgba(0, 0, 0, 0.45) 62%,
+            rgba(0, 0, 0, 0.85) 88%,
+            rgba(0, 0, 0, 0.95) 100%
+          );
+        }
+
+        > * {
+          position: relative;
+          z-index: 1;
         }
       }
 
-      .portfolio__single-content {
-        top: 20px;
-        right: 20px;
-        width: calc(100% - 40px);
-        max-width: 280px;
-        padding: 24px;
-        gap: 24px;
-        align-items: stretch;
-        justify-content: flex-start;
-        text-align: start;
-        background-color: transparent;
+      .portfolio__single-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex: 0 0 auto;
       }
 
       .portfolio__single-logo {
         position: relative;
         display: block;
-        width: 140px;
-        height: 44px;
-        border-radius: 12px;
+        width: 112px;
+        height: 36px;
+        flex: 0 0 auto;
+        border-radius: 10px;
         overflow: hidden;
 
         img {
@@ -372,21 +428,79 @@
         }
       }
 
+      .portfolio__single-arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        color: #ffffff;
+        font-size: 16px;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: var(--transition);
+
+        i {
+          font-size: inherit;
+          color: inherit;
+        }
+      }
+
+      // dorong blok teks ke bawah supaya head tetap di atas
+      .portfolio__single-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 20px;
+        flex: 0 0 auto;
+      }
+
+      .portfolio__single-title {
+        color: #ffffff;
+        font-weight: 600;
+        line-height: 1.2;
+        margin: 0px;
+        text-transform: capitalize;
+      }
+
+      // deskripsi terlipat saat idle, terbuka penuh ketika hover
+      .portfolio__single-desc {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0px;
+        max-height: 0px;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.45s ease, opacity 0.35s ease;
+      }
+
       .portfolio__single-metrics {
         list-style: none;
         margin: 0px;
         padding: 0px;
+        max-height: 0px;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 12px;
+        flex: 0 0 auto;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.35s ease,
+          transform 0.35s ease;
 
         li {
           display: flex;
           align-items: baseline;
           justify-content: space-between;
           gap: 16px;
-          padding-bottom: 14px;
-          border-bottom: 1px dashed var(--card-line, rgba(0, 0, 0, 0.12));
+          padding-bottom: 12px;
+          border-bottom: 1px dashed rgba(255, 255, 255, 0.28);
 
           &:last-child {
             padding-bottom: 0px;
@@ -395,20 +509,137 @@
         }
 
         .label {
-          color: var(--card-muted, rgba(255, 255, 255, 0.72));
-          font-size: 12px;
+          color: rgba(255, 255, 255, 0.72);
+          font-size: 11px;
           font-weight: 500;
           line-height: 1.3;
-          letter-spacing: 0.06em;
+          letter-spacing: 0.07em;
           text-transform: uppercase;
         }
 
         .value {
-          color: var(--card-text, #ffffff);
+          color: #ffffff;
           font-size: 20px;
           font-weight: 700;
           line-height: 1;
           white-space: nowrap;
+        }
+      }
+
+      &:hover {
+        .portfolio__single-media {
+          img {
+            transform: scale(1.05);
+          }
+
+          &::after {
+            opacity: 0.6;
+          }
+        }
+
+        .portfolio__single-media::before {
+          opacity: 1;
+        }
+
+        .portfolio__single-body {
+          padding-top: 0px;
+        }
+
+        .portfolio__single-desc {
+          max-height: 420px;
+          opacity: 1;
+        }
+
+        .portfolio__single-metrics {
+          max-height: 260px;
+          padding-top: 18px;
+          opacity: 1;
+          transform: translateY(0px);
+        }
+
+        .portfolio__single-arrow {
+          opacity: 1;
+          transform: translateY(0px);
+          background-color: var(--primary-color);
+          border-color: var(--primary-color);
+          color: var(--black);
+        }
+      }
+
+      // perangkat sentuh tidak punya hover: tampilkan semua konten
+      @media (hover: none) {
+        .portfolio__single-media::before {
+          opacity: 1;
+        }
+
+        .portfolio__single-body {
+          padding-top: 0px;
+        }
+
+        .portfolio__single-desc {
+          max-height: 420px;
+          opacity: 1;
+        }
+
+        .portfolio__single-metrics {
+          max-height: 260px;
+          padding-top: 18px;
+          opacity: 1;
+          transform: translateY(0px);
+        }
+
+        .portfolio__single-arrow {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+      }
+
+      @media only screen and (max-width: 575.98px) {
+        .portfolio__single-media {
+          aspect-ratio: 4 / 5;
+        }
+
+        .portfolio__single-content {
+          padding: 16px;
+        }
+
+        .portfolio__single-media::before {
+          opacity: 1;
+        }
+
+        .portfolio__single-logo {
+          width: 96px;
+          height: 32px;
+        }
+
+        .portfolio__single-arrow {
+          width: 38px;
+          height: 38px;
+          font-size: 14px;
+          opacity: 1;
+          transform: none;
+        }
+
+        .portfolio__single-desc {
+          max-height: none;
+          opacity: 1;
+          font-size: 13px;
+        }
+
+        .portfolio__single-metrics {
+          max-height: none;
+          opacity: 1;
+          transform: none;
+          gap: 8px;
+          padding-top: 14px;
+
+          li {
+            padding-bottom: 8px;
+          }
+
+          .value {
+            font-size: 17px;
+          }
         }
       }
     }

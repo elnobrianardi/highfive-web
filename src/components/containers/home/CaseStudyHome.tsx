@@ -9,6 +9,7 @@ import caseStudies from "@/data/caseStudies.json";
 type CaseStudy = {
   slug: string;
   title: string;
+  description?: string;
   image: string;
   logo: string;
   kpi: string;
@@ -137,6 +138,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
       <Link
         href={`/case-study/${study.slug}`}
         className="portfolio__single-media"
+        aria-label={study.title}
       >
         <Image
           src={study.image}
@@ -150,16 +152,29 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
         href={`/case-study/${study.slug}`}
         className="portfolio__single-content"
       >
-        <span className="portfolio__single-logo">
-          <Image
-            ref={logoRef}
-            src={study.logo}
-            alt={`${study.title} logo`}
-            fill
-            sizes="140px"
-            style={{ objectFit: "contain", objectPosition: "left center" }}
-          />
+        <span className="portfolio__single-head">
+          <span className="portfolio__single-logo">
+            <Image
+              ref={logoRef}
+              src={study.logo}
+              alt={`${study.title} logo`}
+              fill
+              sizes="140px"
+              style={{ objectFit: "contain", objectPosition: "left center" }}
+            />
+          </span>
+          <span className="portfolio__single-arrow" aria-hidden="true">
+            <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
+          </span>
         </span>
+
+        <span className="portfolio__single-body">
+          <h3 className="portfolio__single-title">{study.title}</h3>
+          {study.description ? (
+            <p className="portfolio__single-desc">{study.description}</p>
+          ) : null}
+        </span>
+
         <ul className="portfolio__single-metrics">
           <li>
             <span className="label">KPI Views</span>
