@@ -54,14 +54,21 @@
 
   .banner-one-thumb {
     position: absolute;
+    object-fit: cover;
     top: 220px;
     left: 50%;
     transform: translateX(-50%);
     z-index: -1;
     width: 100%;
     max-width: 494px;
+    aspect-ratio: 1 / 1;
     height: auto;
     border-radius: 50%;
+
+    &--overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+    }
   }
 
   .star {

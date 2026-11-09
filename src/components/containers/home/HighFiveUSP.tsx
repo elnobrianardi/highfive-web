@@ -3,8 +3,8 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import dotlarge from "public/images/agency/dot-large.png";
-import thumbone from "public/images/agency/thumb-one.png";
-import thumbtwo from "public/images/agency/thumb-two.png";
+import thumbone from "public/images/usp/thumbone.jpeg";
+import thumbtwo from "public/images/usp/thumbtwo.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 

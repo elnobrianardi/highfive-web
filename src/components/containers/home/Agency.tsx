@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import thumbone from "public/images/agency/thumb-one.png";
-import thumbtwo from "public/images/agency/thumb-two.png";
+import thumbtwo from "public/images/agency/banner.jpg";
+import thumbone from "public/images/agency/images1.jpg";
 import star from "public/images/star.png";
 import dotlarge from "public/images/agency/dot-large.png";
 

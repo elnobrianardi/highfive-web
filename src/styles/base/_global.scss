@@ -90,6 +90,22 @@ i {
   }
 }
 
+// Keep the service thumbnails that follow the pointer looking normal:
+// disable the cursor's difference blend so it doesn't invert the image,
+// and use a transparent ring instead of the filled white disc.
+.my-app:has(.offer__cta-single:hover) {
+  .cursor-outer,
+  .cursor-inner {
+    mix-blend-mode: normal;
+  }
+
+  .cursor-inner {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+  }
+}
+
 .unset {
   max-width: unset;
 }

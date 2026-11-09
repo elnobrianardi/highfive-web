@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import banneronethumb from "public/images/banner/banner-one-thumb.png";
+import banneronethumb from "public/images/banner/hero.webp";
 import star from "public/images/star.png";
 import videoframe from "public/images/video-frame.png";
 import YoutubeEmbed from "@/components/youtube/YoutubeEmbed";
@@ -84,6 +84,10 @@ const HomeOneBanner = () => {
           src={banneronethumb}
           alt="Image"
           className="banner-one-thumb d-none d-sm-block g-ban-one"
+        />
+        <div
+          className="banner-one-thumb banner-one-thumb--overlay d-none d-sm-block g-ban-one"
+          aria-hidden="true"
         />
         <Image src={star} alt="Image" className="star" />
         <div className="banner-left-text banner-social-text d-none d-md-flex">

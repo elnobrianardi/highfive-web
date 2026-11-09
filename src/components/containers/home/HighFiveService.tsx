@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import serviceThumb from "public/images/offer/blog-thumb.png";
-import serviceThumbTwo from "public/images/offer/two.png";
-import serviceThumbThree from "public/images/offer/three.png";
+import serviceThumb from "public/images/service/thumbone.jpeg";
+import serviceThumbTwo from "public/images/service/thumbtwo.webp";
+import serviceThumbThree from "public/images/service/thumbthree.webp";
 import star from "public/images/offer/star.png";
 
 const HighFiveService = () => {

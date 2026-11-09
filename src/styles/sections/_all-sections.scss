@@ -618,7 +618,8 @@
       background-repeat: no-repeat;
       background-position-x: 75%;
       opacity: 0;
-      transition: opacity 0.3s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+      // fade-out instan: cegah glitch negatif saat cursor blend aktif lagi
+      transition: opacity 0s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
         -webkit-transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
       margin: -200px 0 0 -150px;
       overflow: hidden;
@@ -651,6 +652,9 @@
 
         .offer-thumb-hover {
           opacity: 1;
+          // fade-in halus; saat unhover kembali ke rule dasar (opacity 0s)
+          transition: opacity 0.3s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+            -webkit-transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
       }
     }

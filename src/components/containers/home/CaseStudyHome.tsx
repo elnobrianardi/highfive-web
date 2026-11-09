@@ -4,10 +4,9 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
-import one from "public/images/portfolio/one.png";
-import two from "public/images/portfolio/two.png";
-import three from "public/images/portfolio/three.png";
-
+import one from "public/images/banner/hero.webp";
+import two from "public/images/banner/hero.webp";
+import three from "public/images/banner/hero.webp";
 const caseStudies = [
   {
     slug: "campaign-one",
