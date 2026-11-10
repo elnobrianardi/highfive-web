@@ -1,32 +1,68 @@
 [
   {
-    "slug": "campaign-one",
-    "title": "Campaign One",
-    "description": "A creator-led product launch that combined short-form video with community reviews to drive sustained awareness across Indonesia.",
-    "image": "/images/case-study/Nutrijell2.png",
-    "logo": "/images/case-study/NutrijellLogo1.png",
-    "kpi": "2.3M",
-    "total": "8.3M",
-    "achievement": "360%"
+    "slug": "nutrijell",
+    "title": "Nutrijell",
+    "description": "To boost awareness and premium appeal for Nutrijell Silky Pudding, we partnered with Geng Cendol (Nagita Slavina, Ashanty, Aurel Hermansyah, Nia Ramadhani, and more). Through celebrity meet-ups and home DIY activities, we created engaging content that amplified brand reach.",
+    "image": "/images/case-study/nutrijell.png",
+    "logo": "/images/sponsor/nutrijell.webp",
+    "logoSize": "lg",
+    "metrics": [
+      {
+        "label": "KPI Views",
+        "value": "2.3M"
+      },
+      {
+        "label": "Total Views",
+        "value": "8.3M"
+      },
+      {
+        "label": "Achievement Rate",
+        "value": "360%"
+      }
+    ]
   },
   {
-    "slug": "campaign-two",
-    "title": "Campaign Two",
-    "description": "Always-on influencer retainer built around lifestyle creators to keep the brand visible in a competitive beauty category.",
-    "image": "/images/case-study/Pantene2.png",
-    "logo": "/images/case-study/PanteneLogo1.png",
-    "kpi": "50K",
-    "total": "100K",
-    "achievement": "200%"
+    "slug": "kredivo",
+    "title": "Kredivo",
+    "description": "To promote wise Buy-Now-Pay-Later use, we drove Kredivo’s #AndaiAndaPandai campaign—from key messaging to amplification via X Trending Topics and influencer collaborations, turning financial education into a relatable nationwide movement.",
+    "image": "/images/case-study/kredivo.png",
+    "logo": "/images/sponsor/kredivo.png",
+    "logoSize": "sm",
+    "metrics": [
+      {
+        "label": "KPI Views",
+        "value": "50K"
+      },
+      {
+        "label": "Total Views",
+        "value": "100K"
+      },
+      {
+        "label": "Achievement Rate",
+        "value": "200%"
+      }
+    ]
   },
   {
-    "slug": "campaign-three",
-    "title": "Campaign Three",
-    "description": "Multi-city foodie activation pairing 30 micro-influencers with a single hero product to reach 23 million total views in eight weeks.",
-    "image": "/images/case-study/TopCoffee2.png",
-    "logo": "/images/case-study/TopCoffeeLogo1.png",
-    "kpi": "3.3M",
-    "total": "23.2M",
-    "achievement": "700%"
+    "slug": "top-coffee",
+    "title": "Top Coffee",
+    "description": "To celebrate Ramadan, we launched the 'Doublicious Berkah' campaign (Double Kebaikan, Double Kemenangan), converting photo uploads into donated iftar packages. Partnering with rising influencers, we amplified the movement and spread the spirit of sharing nationwide.",
+    "image": "/images/case-study/top-coffee.png",
+    "logo": "/images/sponsor/top-coffee.webp",
+    "logoSize": "lg",
+    "metrics": [
+      {
+        "label": "KPI Views",
+        "value": "3.3M"
+      },
+      {
+        "label": "Total Views",
+        "value": "23.2M"
+      },
+      {
+        "label": "Achievement Rate",
+        "value": "700%"
+      }
+    ]
   }
 ]

@@ -334,33 +334,24 @@
           transition: transform 0.6s ease-in-out;
         }
 
+        // overlay hitam rata: tidak tampil saat idle, muncul saat dibuka.
+        // warnanya tetap (tidak diturunkan dari gambar) supaya hasilnya konsisten.
         &::after {
           content: "";
           position: absolute;
           inset: 0px;
-          background-color: var(--card-overlay, rgba(0, 0, 0, 0.55));
+          background-color: rgba(0, 0, 0, 0.55);
           opacity: 0;
-          transition: var(--transition);
+          transition: opacity var(--transition);
           pointer-events: none;
         }
       }
 
-      // lapisan gelap tambahan yang muncul saat hover
+      // lapisan gelap tambahan saat hover sengaja dihilangkan:
+      // scrim pada .portfolio__single-content sudah cukup, dan saat panel
+      // terbuka fotonya tidak ikut menggelap dua kali
       .portfolio__single-media::before {
-        content: "";
-        position: absolute;
-        inset: 0px;
-        z-index: 1;
-        pointer-events: none;
-        background-color: rgba(0, 0, 0, 0.5);
-        background-image: linear-gradient(
-          180deg,
-          rgba(0, 0, 0, 0.1) 0%,
-          rgba(0, 0, 0, 0.4) 45%,
-          rgba(0, 0, 0, 0.85) 100%
-        );
-        opacity: 0;
-        transition: opacity var(--transition);
+        content: none;
       }
 
       // panel menutupi seluruh kartu saat hover, jadi deskripsi panjang tidak sesak
@@ -382,7 +373,7 @@
         overflow-y: auto;
         overscroll-behavior: contain;
 
-        // scrim dasar: ringan saat idle, cukup agar judul terbaca
+        // gradient scrim: hanya untuk keadaan tertutup, memudar saat dibuka
         &::before {
           content: "";
           position: absolute;
@@ -391,16 +382,41 @@
           pointer-events: none;
           background-image: linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0) 30%,
-            rgba(0, 0, 0, 0.45) 62%,
-            rgba(0, 0, 0, 0.85) 88%,
-            rgba(0, 0, 0, 0.95) 100%
+            rgba(0, 0, 0, 0) 28%,
+            rgba(0, 0, 0, 0.46) 60%,
+            rgba(0, 0, 0, 0.86) 86%,
+            rgba(0, 0, 0, 0.96) 100%
           );
+          opacity: 1;
+          transition: opacity var(--transition);
         }
 
         > * {
           position: relative;
           z-index: 1;
+        }
+
+        // scrollbar tipis agar tidak memotong konten kartu
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+
+        &::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: transparent;
+          margin: 12px 0px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 999px;
+          background-color: rgba(255, 255, 255, 0.35);
+          transition: var(--transition);
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background-color: var(--primary-color);
         }
       }
 
@@ -412,14 +428,24 @@
         flex: 0 0 auto;
       }
 
+      // logo mengisi posisi judul: tinggi tetap, lebar ikut rasio aslinya.
+      // kontras dijaga oleh overlay kartu yang selalu digelapkan,
+      // jadi logonya dibiarkan polos tanpa plat atau garis tepi.
       .portfolio__single-logo {
         position: relative;
         display: block;
-        width: 112px;
         height: 36px;
+        width: calc(36px * var(--logo-ratio, 3.5));
+        max-width: 210px;
         flex: 0 0 auto;
-        border-radius: 10px;
-        overflow: hidden;
+        margin-bottom: 4px;
+
+        // logo hampir persegi butuh ruang lebih besar
+        &--lg {
+          height: 68px;
+          width: calc(68px * var(--logo-ratio, 3.5));
+          max-width: 250px;
+        }
 
         img {
           width: 100%;
@@ -459,12 +485,19 @@
         flex: 0 0 auto;
       }
 
+      // judul disembunyikan secara visual karena logo sudah mewakilinya,
+      // tapi tetap dibaca screen reader dan mesin pencari
       .portfolio__single-title {
-        color: #ffffff;
-        font-weight: 600;
-        line-height: 1.2;
-        margin: 0px;
-        text-transform: capitalize;
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0px;
+        overflow: hidden;
+        white-space: nowrap;
+        clip: rect(0, 0, 0, 0);
+        clip-path: inset(50%);
+        border: 0px;
       }
 
       // deskripsi terlipat saat idle, terbuka penuh ketika hover
@@ -532,13 +565,15 @@
             transform: scale(1.05);
           }
 
+          // saat dibuka: overlay hitam rata (warna tetap, bukan dari gambar)
           &::after {
-            opacity: 0.6;
+            opacity: 1;
           }
         }
 
-        .portfolio__single-media::before {
-          opacity: 1;
+        // dan gradientnya dimatikan
+        .portfolio__single-content::before {
+          opacity: 0;
         }
 
         .portfolio__single-body {
@@ -550,8 +585,10 @@
           opacity: 1;
         }
 
+        // metrics sekarang dinamis (jumlah baris tidak tetap),
+        // jadi beri ruang lebih lega supaya semua baris ikut terbuka
         .portfolio__single-metrics {
-          max-height: 260px;
+          max-height: 480px;
           padding-top: 18px;
           opacity: 1;
           transform: translateY(0px);
@@ -568,8 +605,14 @@
 
       // perangkat sentuh tidak punya hover: tampilkan semua konten
       @media (hover: none) {
-        .portfolio__single-media::before {
+        // kartu selalu dalam keadaan "terbuka" di perangkat sentuh,
+        // jadi pakai overlay rata dan matikan gradient
+        .portfolio__single-media::after {
           opacity: 1;
+        }
+
+        .portfolio__single-content::before {
+          opacity: 0;
         }
 
         .portfolio__single-body {
@@ -582,7 +625,7 @@
         }
 
         .portfolio__single-metrics {
-          max-height: 260px;
+          max-height: 480px;
           padding-top: 18px;
           opacity: 1;
           transform: translateY(0px);
@@ -603,13 +646,24 @@
           padding: 16px;
         }
 
-        .portfolio__single-media::before {
+        .portfolio__single-media::after {
           opacity: 1;
         }
 
+        .portfolio__single-content::before {
+          opacity: 0;
+        }
+
         .portfolio__single-logo {
-          width: 96px;
-          height: 32px;
+          height: 30px;
+          width: calc(30px * var(--logo-ratio, 3.5));
+          max-width: 160px;
+
+          &--lg {
+            height: 56px;
+            width: calc(56px * var(--logo-ratio, 3.5));
+            max-width: 190px;
+          }
         }
 
         .portfolio__single-arrow {

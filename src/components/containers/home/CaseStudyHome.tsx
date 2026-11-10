@@ -6,99 +6,33 @@ import { Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import caseStudies from "@/data/caseStudies.json";
 
+type CaseStudyMetric = {
+  label: string;
+  value: string;
+};
+
+// "lg" untuk logo yang rasionya hampir persegi (butuh ruang lebih besar),
+// "sm" untuk wordmark lebar seperti kredivo yang sudah terbaca di ukuran kecil
+type LogoSize = "sm" | "lg";
+
 type CaseStudy = {
   slug: string;
   title: string;
   description?: string;
   image: string;
   logo: string;
-  kpi: string;
-  total: string;
-  achievement: string;
+  logoSize?: LogoSize;
+  metrics: CaseStudyMetric[];
 };
 
-type CardTint = {
-  overlay: string;
-  text: string;
-  muted: string;
-  line: string;
-};
-
-const FALLBACK_TINT: CardTint = {
-  overlay: "rgba(0, 0, 0, 0.55)",
-  text: "#ffffff",
-  muted: "rgba(255, 255, 255, 0.72)",
-  line: "rgba(255, 255, 255, 0.25)",
-};
-
-// Ambil warna background dari aset logo (area tepi) untuk dipakai sebagai overlay
-const pickTintFromLogo = (img: HTMLImageElement): CardTint | null => {
-  try {
-    const size = 24;
-    const canvas = document.createElement("canvas");
-    canvas.width = size;
-    canvas.height = size;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return null;
-
-    ctx.drawImage(img, 0, 0, size, size);
-    const { data } = ctx.getImageData(0, 0, size, size);
-    const pad = Math.max(1, Math.round(size * 0.08));
-
-    let r = 0;
-    let g = 0;
-    let b = 0;
-    let count = 0;
-
-    for (let y = 0; y < size; y += 1) {
-      for (let x = 0; x < size; x += 1) {
-        const onEdge =
-          x < pad || x >= size - pad || y < pad || y >= size - pad;
-        if (!onEdge) continue;
-
-        const i = (y * size + x) * 4;
-        if (data[i + 3] < 128) continue;
-
-        r += data[i];
-        g += data[i + 1];
-        b += data[i + 2];
-        count += 1;
-      }
-    }
-
-    if (!count) return null;
-
-    r = Math.round(r / count);
-    g = Math.round(g / count);
-    b = Math.round(b / count);
-
-    const toLinear = (channel: number) => {
-      const v = channel / 255;
-      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-    };
-    const luminance =
-      0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
-
-    // Pilih warna teks dengan kontras tertinggi terhadap warna overlay
-    const whiteContrast = 1.05 / (luminance + 0.05);
-    const darkContrast = (luminance + 0.05) / 0.0556;
-    const darkText = darkContrast >= whiteContrast;
-
-    return {
-      overlay: `rgba(${r}, ${g}, ${b}, 0.9)`,
-      text: darkText ? "rgba(17, 17, 17, 0.92)" : "#ffffff",
-      muted: darkText ? "rgba(17, 17, 17, 0.66)" : "rgba(255, 255, 255, 0.72)",
-      line: darkText ? "rgba(17, 17, 17, 0.18)" : "rgba(255, 255, 255, 0.25)",
-    };
-  } catch {
-    return null;
-  }
-};
+// JSON import melebarkan literal ("lg" | "sm") menjadi string,
+// jadi datanya di-cast ke CaseStudy[] agar tetap type-safe
+const studies = caseStudies as CaseStudy[];
 
 const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
   const logoRef = useRef<HTMLImageElement>(null);
-  const [tint, setTint] = useState<CardTint>(FALLBACK_TINT);
+  // rasio asli logo dipakai supaya kotak logo mengikuti bentuk aslinya
+  const [logoRatio, setLogoRatio] = useState<number | null>(null);
 
   useEffect(() => {
     const img = logoRef.current;
@@ -107,8 +41,9 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
     let cancelled = false;
     const update = () => {
       if (cancelled) return;
-      const next = pickTintFromLogo(img);
-      if (next) setTint(next);
+      if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+        setLogoRatio(img.naturalWidth / img.naturalHeight);
+      }
     };
 
     if (img.complete && img.naturalWidth > 0) {
@@ -128,10 +63,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
       className="portfolio__single portfolio__single--metrics topy-tilt fade-top"
       style={
         {
-          "--card-overlay": tint.overlay,
-          "--card-text": tint.text,
-          "--card-muted": tint.muted,
-          "--card-line": tint.line,
+          "--logo-ratio": logoRatio ?? undefined,
         } as React.CSSProperties
       }
     >
@@ -153,42 +85,44 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
         className="portfolio__single-content"
       >
         <span className="portfolio__single-head">
-          <span className="portfolio__single-logo">
-            <Image
-              ref={logoRef}
-              src={study.logo}
-              alt={`${study.title} logo`}
-              fill
-              sizes="140px"
-              style={{ objectFit: "contain", objectPosition: "left center" }}
-            />
-          </span>
           <span className="portfolio__single-arrow" aria-hidden="true">
             <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
           </span>
         </span>
 
         <span className="portfolio__single-body">
+          {/* logo menggantikan judul teks sebagai identitas kartu */}
+          <span
+            className={`portfolio__single-logo${
+              study.logoSize === "lg" ? " portfolio__single-logo--lg" : ""
+            }`}
+          >
+            <Image
+              ref={logoRef}
+              src={study.logo}
+              alt={`${study.title} logo`}
+              fill
+              sizes="(max-width: 575.98px) 200px, 280px"
+              style={{ objectFit: "contain", objectPosition: "left center" }}
+            />
+          </span>
+          {/* judul tetap ada untuk pembaca layar dan SEO */}
           <h3 className="portfolio__single-title">{study.title}</h3>
           {study.description ? (
             <p className="portfolio__single-desc">{study.description}</p>
           ) : null}
         </span>
 
-        <ul className="portfolio__single-metrics">
-          <li>
-            <span className="label">KPI Views</span>
-            <strong className="value">{study.kpi}</strong>
-          </li>
-          <li>
-            <span className="label">Total Views</span>
-            <strong className="value">{study.total}</strong>
-          </li>
-          <li>
-            <span className="label">Achievement Rate</span>
-            <strong className="value">{study.achievement}</strong>
-          </li>
-        </ul>
+        {study.metrics?.length ? (
+          <ul className="portfolio__single-metrics">
+            {study.metrics.map((metric, index) => (
+              <li key={`${study.slug}-metric-${index}`}>
+                <span className="label">{metric.label}</span>
+                <strong className="value">{metric.value}</strong>
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </Link>
     </div>
   );
@@ -298,7 +232,7 @@ const CaseStudyHome = () => {
           </div>
         </div>
         <div className="row gaper">
-          {caseStudies.map((study) => (
+          {studies.map((study) => (
             <div className="col-12 col-md-6 col-xl-4" key={study.slug}>
               <CaseStudyCard study={study} />
             </div>
