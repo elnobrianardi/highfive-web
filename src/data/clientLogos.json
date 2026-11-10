@@ -1,26 +1,34 @@
 [
   {
-    "name": "Client One",
-    "logo": "/images/sponsor/one.png"
+    "name": "Mandiri",
+    "logo": "/images/sponsor/mandiri.webp"
   },
   {
-    "name": "Client Two",
-    "logo": "/images/sponsor/two.png"
+    "name": "Lifebuoy",
+    "logo": "/images/sponsor/lifebuoy.png"
   },
   {
-    "name": "Client Three",
-    "logo": "/images/sponsor/three.png"
+    "name": "Nutrijell",
+    "logo": "/images/sponsor/nutrijell.png",
+    "height": 68
   },
   {
-    "name": "Client Four",
-    "logo": "/images/sponsor/four.png"
+    "name": "Rinso",
+    "logo": "/images/sponsor/rinso.webp",
+    "height": 65
   },
   {
-    "name": "Client Five",
-    "logo": "/images/sponsor/five.png"
+    "name": "Tiket.com",
+    "logo": "/images/sponsor/tiket.png"
   },
   {
-    "name": "Client Six",
-    "logo": "/images/sponsor/six.png"
+    "name": "Unilever",
+    "logo": "/images/sponsor/unilever.png",
+    "height": 68
+  },
+  {
+    "name": "Top Coffee",
+    "logo": "/images/sponsor/top-coffee.webp",
+    "height": 65
   }
 ]

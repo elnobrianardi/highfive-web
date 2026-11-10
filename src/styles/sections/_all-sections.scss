@@ -1487,17 +1487,29 @@
 
 // Home client logos strip: samakan bg dengan bg aset logo (#ef9559)
 .sponsor--clients {
-  background-color: #ef9559;
-  width: calc(100% - 40px);
-  max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
   padding: 60px 0px;
   border-radius: 20px;
 
-  // tinggi logo dijaga kecil supaya aset resolusi rendah tidak pecah saat retina
+  // slide dibuat flex supaya logo dengan tinggi berbeda tetap sejajar tengah
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+  }
+
+  // Tinggi logo diatur per-logo lewat custom property inline --logo-height.
+  // Sebagian aset punya padding transparan besar (mis. nutrijell) atau kanvas
+  // kecil (mis. top-coffee), jadi ukuran visualnya perlu disamakan manual.
+  // Diatur lewat height (bukan transform: scale) agar tidak terpotong
+  // overflow slider.
   .sponsor__slider-item {
-    height: 50px;
+    width: 100%;
+    height: var(--logo-height, 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .lines .line {

@@ -8,6 +8,10 @@ import clientLogos from "@/data/clientLogos.json";
 type ClientLogo = {
   name: string;
   logo: string;
+  // Beberapa aset logo punya padding transparan besar atau kanvas kecil, jadi
+  // tinggi render-nya diatur per-logo (px) supaya ukuran visualnya seimbang.
+  // Default 50px, lihat .sponsor--clients di _all-sections.scss.
+  height?: number;
 };
 
 // Ulang kalau jumlah logo sedikit supaya slider loop tetap penuh; untuk 27 logo cukup sekali
@@ -58,7 +62,16 @@ const HomeSponsor = () => {
               >
                 {slides.map((client, index) => (
                   <SwiperSlide key={`${client.name}-${index}`}>
-                    <div className="sponsor__slider-item">
+                    <div
+                      className="sponsor__slider-item"
+                      style={
+                        {
+                          "--logo-height": client.height
+                            ? `${client.height}px`
+                            : undefined,
+                        } as React.CSSProperties
+                      }
+                    >
                       <Image
                         src={client.logo}
                         alt={client.name}
