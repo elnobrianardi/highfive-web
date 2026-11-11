@@ -92,7 +92,7 @@ const HighFiveUSP = () => {
 
   return (
     <section className="section agency" style={{ padding: "100px 0" }}>
-      <div className="container-fluid px-0">
+      <div className="container px-0">
         <div className="row g-0 align-items-center">
           <div className="col-12 col-lg-6 order-2 order-lg-1">
             <div className="px-4 px-lg-5">

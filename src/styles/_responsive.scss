@@ -576,6 +576,22 @@
     margin-top: 40px;
   }
 
+  // navbar tablet: lebih kecil dari desktop, tapi masih lebih besar dari mobile
+  .secondary--navbar {
+    padding: 22px 0px;
+
+    .navbar__logo {
+      img {
+        height: 46px;
+        width: auto;
+      }
+    }
+
+    .open-offcanvas-nav {
+      @include box(64px);
+    }
+  }
+
   .banner {
     .banner-one-thumb {
       top: 160px;
@@ -1065,9 +1081,23 @@
     }
   }
 
+  // navbar dibuat lebih ringkas di mobile: logo lebih kecil + tombol bulat lebih kecil
   .secondary--navbar {
+    padding: 14px 0px;
+
+    .navbar__logo {
+      a {
+        display: block;
+      }
+
+      img {
+        height: 34px;
+        width: auto;
+      }
+    }
+
     .open-offcanvas-nav {
-      @include box(60px);
+      @include box(48px);
     }
   }
 

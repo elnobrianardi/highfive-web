@@ -5,25 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import caseStudies from "@/data/caseStudies.json";
-
-type CaseStudyMetric = {
-  label: string;
-  value: string;
-};
-
-// "lg" untuk logo yang rasionya hampir persegi (butuh ruang lebih besar),
-// "sm" untuk wordmark lebar seperti kredivo yang sudah terbaca di ukuran kecil
-type LogoSize = "sm" | "lg";
-
-type CaseStudy = {
-  slug: string;
-  title: string;
-  description?: string;
-  image: string;
-  logo: string;
-  logoSize?: LogoSize;
-  metrics: CaseStudyMetric[];
-};
+import CaseStudyCardCompact from "./CaseStudyCardCompact";
+import type { CaseStudy } from "@/types/caseStudy";
 
 // JSON import melebarkan literal ("lg" | "sm") menjadi string,
 // jadi datanya di-cast ke CaseStudy[] agar tetap type-safe
@@ -67,30 +50,20 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
         } as React.CSSProperties
       }
     >
-      <Link
-        href={`/case-study/${study.slug}`}
-        className="portfolio__single-media"
-        aria-label={study.title}
-      >
+      {/* Kartu hanya presentasi visual: tidak ada tautan sama sekali,
+          karena belum ada halaman detail case study. */}
+      <div className="portfolio__single-media">
         <Image
           src={study.image}
           alt={study.title}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 767.98px) 100vw, (max-width: 1199.98px) 50vw, 33vw"
           style={{ objectFit: "cover" }}
         />
-      </Link>
-      <Link
-        href={`/case-study/${study.slug}`}
-        className="portfolio__single-content"
-      >
-        <span className="portfolio__single-head">
-          <span className="portfolio__single-arrow" aria-hidden="true">
-            <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-          </span>
-        </span>
+      </div>
 
-        <span className="portfolio__single-body">
+      <div className="portfolio__single-content">
+        <div className="portfolio__single-body">
           {/* logo menggantikan judul teks sebagai identitas kartu */}
           <span
             className={`portfolio__single-logo${
@@ -111,19 +84,19 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
           {study.description ? (
             <p className="portfolio__single-desc">{study.description}</p>
           ) : null}
-        </span>
 
-        {study.metrics?.length ? (
-          <ul className="portfolio__single-metrics">
-            {study.metrics.map((metric, index) => (
-              <li key={`${study.slug}-metric-${index}`}>
-                <span className="label">{metric.label}</span>
-                <strong className="value">{metric.value}</strong>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </Link>
+          {study.metrics?.length ? (
+            <ul className="portfolio__single-metrics">
+              {study.metrics.map((metric, index) => (
+                <li key={`${study.title}-metric-${index}`}>
+                  <span className="label">{metric.label}</span>
+                  <strong className="value">{metric.value}</strong>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 };
@@ -231,10 +204,20 @@ const CaseStudyHome = () => {
             </div>
           </div>
         </div>
-        <div className="row gaper">
+        {/* desktop: kartu persegi dengan panel yang terbuka saat hover */}
+        <div className="row gaper portfolio__cards d-none d-lg-flex">
           {studies.map((study) => (
-            <div className="col-12 col-md-6 col-xl-4" key={study.slug}>
+            <div className="col-lg-4" key={study.title}>
               <CaseStudyCard study={study} />
+            </div>
+          ))}
+        </div>
+
+        {/* tablet & mobile: kartu kapsul dua bagian, tidak butuh hover */}
+        <div className="row gaper portfolio__cards d-lg-none">
+          {studies.map((study, index) => (
+            <div className="col-12 col-sm-6" key={study.title}>
+              <CaseStudyCardCompact study={study} index={index} />
             </div>
           ))}
         </div>

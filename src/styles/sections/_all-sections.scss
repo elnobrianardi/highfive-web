@@ -638,10 +638,6 @@
       }
 
       @media only screen and (max-width: 575.98px) {
-        .portfolio__single-media {
-          aspect-ratio: 4 / 5;
-        }
-
         .portfolio__single-content {
           padding: 16px;
         }
@@ -697,6 +693,12 @@
         }
       }
     }
+  }
+
+  // grid kartu: saat jumlah kartu ganjil di tablet (2 kolom),
+  // kartu terakhir pada baris kedua otomatis berada di tengah
+  .portfolio__cards {
+    justify-content: center;
   }
 
   .portfolio__single-active {
