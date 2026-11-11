@@ -17,7 +17,7 @@ const Footer = () => {
               <Link href="/" className="title-anim">
                 <Image src={logo} alt="Image" width={100} style={{ borderRadius: "20%"}}/>
               </Link>
-              <div className="footer__single-meta">
+              {/* <div className="footer__single-meta">
                 <Link
                   href="https://www.google.com/maps/d/viewer?mid=1UZ57Drfs3SGrTgh6mrYjQktu6uY&hl=en_US&ll=18.672105000000013%2C105.68673800000003&z=17"
                   target="_blank"
@@ -33,15 +33,15 @@ const Footer = () => {
                   <i className="fa-sharp fa-solid fa-envelope"></i>
                   info@highfive.com
                 </Link>
-              </div>
-              <div className="footer__cta text-start">
+              </div> */}
+              {/* <div className="footer__cta text-start">
                 <Link href="contact-us" className="btn btn--secondary">
                   book a call now
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
-          <div className="col-12 col-lg-2 col-xl-2">
+          {/* <div className="col-12 col-lg-2 col-xl-2">
             <div className="footer__single">
               <div className="footer__single-intro">
                 <h5>discover</h5>
@@ -63,8 +63,8 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-          </div>
-          <div className="col-12 col-lg-5 col-xl-4">
+          </div> */}
+          {/* <div className="col-12 col-lg-5 col-xl-4">
             <div className="footer__single">
               <div className="footer__single-intro">
                 <h5>Subscribe our newsletter</h5>
@@ -92,7 +92,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="row">
           <div className="col-12">
@@ -107,7 +107,7 @@ const Footer = () => {
                     </p>
                   </div>
                 </div>
-                <div className="col-12 col-lg-4">
+                {/* <div className="col-12 col-lg-4">
                   <div className="social justify-content-center justify-content-lg-end">
                     <Link href="https://www.facebook.com/" target="_blank">
                       <i className="fa-brands fa-facebook-f"></i>
@@ -122,7 +122,7 @@ const Footer = () => {
                       <i className="fa-brands fa-instagram"></i>
                     </Link>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

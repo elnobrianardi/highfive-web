@@ -7,7 +7,7 @@ import HomeSponsor from "@/components/containers/home/HomeSponsor";
 import HighFiveService from "@/components/containers/home/HighFiveService";
 import HighFiveUSP from "@/components/containers/home/HighFiveUSP";
 import CaseStudyHome from "@/components/containers/home/CaseStudyHome";
-import ContactInfo from "@/components/containers/home/ContactInfo";
+// import ContactInfo from "@/components/containers/home/ContactInfo";
 
 const Home = () => {
   return (
@@ -19,7 +19,7 @@ const Home = () => {
       <HighFiveService />
       <HighFiveUSP />
       <CaseStudyHome />
-      <ContactInfo />
+      {/* <ContactInfo /> */}
     </Layout>
   );
 };
