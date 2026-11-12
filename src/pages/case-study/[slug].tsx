@@ -16,7 +16,16 @@ const CaseStudySingle = () => {
   }
 
   return (
-    <Layout header={2} footer={5} video={0}>
+    <Layout
+      header={2}
+      footer={5}
+      video={0}
+      seo={{
+        title: `${title} Case Study`,
+        canonicalPath: `/case-study/${slug ?? ""}`,
+        description: `Influencer marketing case study: how High Five delivered results for ${title}.`,
+      }}
+    >
       <CmnBanner title={title} navigation={title} parent="Case Study" parentLink="/" />
       <ProjectDetailsMain />
     </Layout>

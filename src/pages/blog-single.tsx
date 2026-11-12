@@ -5,7 +5,14 @@ import BlogDetailsMain from "@/components/containers/blog/BlogDetailsMain";
 
 const BlogSingle = () => {
   return (
-    <Layout header={2} footer={5} video={0}>
+    <Layout
+      header={2}
+      footer={5}
+      video={0}
+      seo={{
+        title: "Blog Article",
+      }}
+    >
       <BlogSingleBanner />
       <BlogDetailsMain />
     </Layout>

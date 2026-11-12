@@ -1,0 +1,60 @@
+{
+  "name": "High Five",
+  "legalName": "High Five",
+  "url": "https://highfive.co.id",
+  "description": "High Five helps brands grow through strategic influencer marketing campaigns, creator partnerships, and brand placement across Indonesia.",
+  "keywords": [
+    "influencer marketing agency",
+    "creator campaign",
+    "brand placement",
+    "KOL agency Indonesia",
+    "social media marketing"
+  ],
+  "email": "hello@highfive.co.id",
+  "defaultOgImage": "/images/agency/banner.jpg",
+  "logo": "/images/logo-white.jpeg",
+  "locale": "en_US",
+  "twitterHandle": "",
+  "address": {
+    "streetAddress": "",
+    "addressLocality": "",
+    "addressRegion": "",
+    "postalCode": "",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "latitude": null,
+    "longitude": null
+  },
+  "areaServed": "Indonesia",
+  "sameAs": [],
+  "services": [
+    {
+      "name": "Influencers Marketing Campaign",
+      "description": "End-to-end influencer marketing campaigns that connect brands with the right creators, tailored to your campaign goals."
+    },
+    {
+      "name": "Hyperlocal Creator Campaign",
+      "description": "Hyperlocal creator campaigns that reach targeted communities and local audiences through region-specific content."
+    },
+    {
+      "name": "Brand Placement",
+      "description": "Brand placement inside creator content and social channels to build awareness and credibility."
+    }
+  ],
+  "knowsAbout": [
+    "Beauty",
+    "Fashion",
+    "Lifestyle",
+    "Foodies",
+    "Finance",
+    "Tech",
+    "Automotive",
+    "Gamers"
+  ],
+  "stats": {
+    "influencersDatabase": "15000",
+    "citiesCovered": "30",
+    "historicalCampaigns": "500"
+  }
+}

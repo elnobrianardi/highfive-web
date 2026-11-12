@@ -10,7 +10,17 @@ import AboutCta from "@/components/containers/home-two/AboutCta";
 
 const AboutUs = () => {
   return (
-    <Layout header={2} footer={5} video={0}>
+    <Layout
+      header={2}
+      footer={5}
+      video={0}
+      seo={{
+        title: "About Us",
+        canonicalPath: "/about-us",
+        description:
+          "Learn about High Five, an influencer marketing agency building creator-led campaigns for leading brands in Indonesia.",
+      }}
+    >
       <CmnBanner title="About Us" navigation="About Us" />
       <HomeTwoModal />
       <Agency />

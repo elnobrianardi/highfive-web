@@ -5,7 +5,17 @@ import ClientFeedbackMain from "@/components/containers/ClientFeedbackMain";
 
 const ClientFeedback = () => {
   return (
-    <Layout header={2} footer={5} video={0}>
+    <Layout
+      header={2}
+      footer={5}
+      video={0}
+      seo={{
+        title: "Client Feedback",
+        canonicalPath: "/client-feedback",
+        description:
+          "Read what brands say about working with High Five on influencer marketing and creator-led campaigns.",
+      }}
+    >
       <CmnBanner title="Client's Feedback" navigation="Client's Feedback" />
       <ClientFeedbackMain />
     </Layout>

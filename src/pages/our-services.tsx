@@ -9,7 +9,17 @@ import CtaTwo from "@/components/containers/service-details/CtaTwo";
 
 const OurServices = () => {
   return (
-    <Layout header={2} footer={5} video={0}>
+    <Layout
+      header={2}
+      footer={5}
+      video={0}
+      seo={{
+        title: "Our Services",
+        canonicalPath: "/our-services",
+        description:
+          "Influencer marketing services from High Five: creator sourcing, campaign strategy, content production, and performance reporting.",
+      }}
+    >
       <CmnBanner title="Our Services" navigation="Our Services" />
       <ServiceMain />
       <HomeTwoModal />

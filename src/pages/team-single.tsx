@@ -6,7 +6,17 @@ import CtaTwo from "@/components/containers/service-details/CtaTwo";
 
 const TeamDetails = () => {
   return (
-    <Layout header={2} footer={5} video={0}>
+    <Layout
+      header={2}
+      footer={5}
+      video={0}
+      seo={{
+        title: "Team Member",
+        canonicalPath: "/team-single",
+        description:
+          "Profile of a High Five team member working on influencer marketing and creator campaigns.",
+      }}
+    >
       <CmnBanner
         title="SANA P. LESH"
         navigation="Team Details"

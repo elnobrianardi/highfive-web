@@ -8,7 +8,17 @@ import OurAchievement from "@/components/containers/OurAchievement";
 
 const OurStory = () => {
   return (
-    <Layout header={2} footer={5} video={0}>
+    <Layout
+      header={2}
+      footer={5}
+      video={0}
+      seo={{
+        title: "Our Story",
+        canonicalPath: "/our-story",
+        description:
+          "The story behind High Five: how we built an influencer marketing agency driven by creators, culture, and measurable brand growth.",
+      }}
+    >
       <CmnBanner title="Our Story" navigation="Our Story" />
       <HomeTwoAward />
       <OurMission />

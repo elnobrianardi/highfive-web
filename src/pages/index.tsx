@@ -8,10 +8,141 @@ import HighFiveService from "@/components/containers/home/HighFiveService";
 import HighFiveUSP from "@/components/containers/home/HighFiveUSP";
 import CaseStudyHome from "@/components/containers/home/CaseStudyHome";
 // import ContactInfo from "@/components/containers/home/ContactInfo";
+import site from "@/data/site.json";
+import caseStudies from "@/data/caseStudies.json";
+
+type CaseStudy = {
+  title: string;
+  description: string;
+  image: string;
+  logo?: string;
+  metrics?: { label: string; value: string }[];
+};
+
+const organizationId = `${site.url}/#organization`;
+const websiteId = `${site.url}/#website`;
+
+const organizationJsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": organizationId,
+  name: site.name,
+  legalName: site.legalName,
+  url: site.url,
+  logo: `${site.url}${site.logo}`,
+  image: `${site.url}${site.defaultOgImage}`,
+  description: site.description,
+  email: site.email,
+  knowsAbout: site.knowsAbout,
+  areaServed: {
+    "@type": "Country",
+    name: site.areaServed,
+  },
+  sameAs: site.sameAs,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: site.address.addressLocality,
+    addressRegion: site.address.addressRegion,
+    postalCode: site.address.postalCode,
+    addressCountry: site.address.addressCountry,
+  },
+  additionalProperty: [
+    {
+      "@type": "PropertyValue",
+      name: "Influencers Database",
+      value: site.stats.influencersDatabase,
+      unitText: "influencers",
+    },
+    {
+      "@type": "PropertyValue",
+      name: "City Covered",
+      value: site.stats.citiesCovered,
+      unitText: "cities",
+    },
+    {
+      "@type": "PropertyValue",
+      name: "Historical Campaign",
+      value: site.stats.historicalCampaigns,
+      unitText: "campaigns",
+    },
+  ],
+};
+
+const websiteJsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": websiteId,
+  url: site.url,
+  name: site.name,
+  description: site.description,
+  publisher: { "@id": organizationId },
+  inLanguage: "en",
+};
+
+const servicesJsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${site.url}/#service`,
+  serviceType: "Influencer Marketing",
+  name: "Influencer Marketing Services",
+  description:
+    "High Five connects brands with the right creators through influencer marketing campaigns tailored to your goals.",
+  provider: { "@id": organizationId },
+  areaServed: {
+    "@type": "Country",
+    name: site.areaServed,
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Influencer Marketing Services",
+    itemListElement: site.services.map((service, index) => ({
+      "@type": "Offer",
+      position: index + 1,
+      itemOffered: {
+        "@type": "Service",
+        name: service.name,
+        description: service.description,
+      },
+    })),
+  },
+};
+
+const caseStudyJsonLd = (caseStudies as CaseStudy[]).map(
+  (item): Record<string, unknown> => ({
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: `${item.title} Influencer Marketing Campaign`,
+    description: item.description,
+    image: `${site.url}${item.image}`,
+    about: { "@type": "Brand", name: item.title },
+    creator: { "@id": organizationId },
+    additionalProperty: (item.metrics || []).map((metric) => ({
+      "@type": "PropertyValue",
+      name: metric.label,
+      value: metric.value,
+    })),
+  })
+);
+
+const homeJsonLd: Record<string, unknown>[] = [
+  organizationJsonLd,
+  websiteJsonLd,
+  servicesJsonLd,
+  ...caseStudyJsonLd,
+];
 
 const Home = () => {
   return (
-    <Layout header={1} footer={1}>
+    <Layout
+      header={1}
+      footer={1}
+      seo={{
+        canonicalPath: "/",
+        description:
+          "High Five is an influencer marketing agency helping brands grow through strategic creator campaigns, KOL partnerships, and brand placement across Indonesia.",
+        jsonLd: homeJsonLd,
+      }}
+    >
       <HomeOneBanner />
       <Agency />
       <AgencyRunningText />
