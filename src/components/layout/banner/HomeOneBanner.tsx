@@ -5,12 +5,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import banneronethumb from "public/images/banner/hero.webp";
 import star from "public/images/star.png";
-import videoframe from "public/images/video-frame.png";
+// import videoframe from "public/images/video-frame.png";
 import YoutubeEmbed from "@/components/youtube/YoutubeEmbed";
 
 gsap.registerPlugin(ScrollTrigger);
 const HomeOneBanner = () => {
-  const [videoActive, setVideoActive] = useState(false);
+  // const [videoActive, setVideoActive] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -23,7 +23,7 @@ const HomeOneBanner = () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: ".banner",
-            start: "center center",
+            start: "top top",
             end: "+=100%",
             scrub: true,
             pin: false,
@@ -105,13 +105,13 @@ const HomeOneBanner = () => {
             facebook
           </Link>
         </div> */}
-        <button
+        {/* <button
           className="video-frame video-btn"
           onClick={() => setVideoActive(true)}
         >
           <Image src={videoframe} alt="Image" priority />
           <i className="fa-sharp fa-solid fa-play"></i>
-        </button>
+        </button> */}
         <div className="lines d-none d-lg-flex">
           <div className="line"></div>
           <div className="line"></div>
@@ -120,7 +120,7 @@ const HomeOneBanner = () => {
           <div className="line"></div>
         </div>
       </section>
-      <div
+      {/* <div
         className={(videoActive ? " video-zoom-in" : " ") + " video-backdrop"}
         onClick={() => setVideoActive(false)}
       >
@@ -139,7 +139,7 @@ const HomeOneBanner = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
