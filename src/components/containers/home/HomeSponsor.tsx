@@ -30,7 +30,8 @@ const HomeSponsor = () => {
           <div className="col-12">
             <div className="sponsor__slider-w">
               <Swiper
-                slidesPerView={5}
+                // Mobile default: 3 logos visible
+                slidesPerView={3}
                 spaceBetween={10}
                 slidesPerGroup={1}
                 speed={1200}
@@ -76,7 +77,7 @@ const HomeSponsor = () => {
                         src={client.logo}
                         alt={client.name}
                         fill
-                        sizes="(max-width: 576px) 50vw, (max-width: 1200px) 25vw, 16vw"
+                        sizes="(max-width: 576px) 33vw, (max-width: 1200px) 25vw, 16vw"
                         style={{ objectFit: "contain" }}
                       />
                     </div>
