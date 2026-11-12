@@ -7,7 +7,17 @@ import CtaTwo from "@/components/containers/service-details/CtaTwo";
 
 const OurProjects = () => {
   return (
-    <Layout header={2} footer={5} video={0}>
+    <Layout
+      header={2}
+      footer={5}
+      video={0}
+      seo={{
+        title: "Our Projects",
+        canonicalPath: "/our-projects",
+        description:
+          "Explore influencer marketing projects delivered by High Five across FMCG, fintech, beauty, and food brands.",
+      }}
+    >
       <CmnBanner title="Our Projects" navigation="Our Projects" />
       <ProjectMain />
       <WorkStepsProject />

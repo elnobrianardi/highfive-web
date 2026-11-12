@@ -38,6 +38,7 @@
     img {
       max-width: 100%;
       height: auto;
+      border-radius: 20px;
     }
 
     .thumb-one {
@@ -308,6 +309,396 @@
         transform: translateY(0px) scale(1);
       }
     }
+
+    // case study card: compact square card, hover expands into a full panel
+    &--metrics {
+      border-radius: 20px;
+
+      // matikan garis sudut bawaan kartu portfolio
+      &::before,
+      &::after {
+        content: none;
+      }
+
+      .portfolio__single-media {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+
+        img {
+          width: 100%;
+          height: 100%;
+          min-height: 0px;
+          object-fit: cover;
+          transition: transform 0.6s ease-in-out;
+        }
+
+        // overlay hitam rata: tidak tampil saat idle, muncul saat dibuka.
+        // warnanya tetap (tidak diturunkan dari gambar) supaya hasilnya konsisten.
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          background-color: rgba(0, 0, 0, 0.55);
+          opacity: 0;
+          transition: opacity var(--transition);
+          pointer-events: none;
+        }
+      }
+
+      // lapisan gelap tambahan saat hover sengaja dihilangkan:
+      // scrim pada .portfolio__single-content sudah cukup, dan saat panel
+      // terbuka fotonya tidak ikut menggelap dua kali
+      .portfolio__single-media::before {
+        content: none;
+      }
+
+      // panel menutupi seluruh kartu saat hover, jadi deskripsi panjang tidak sesak
+      .portfolio__single-content {
+        position: absolute;
+        inset: 0px;
+        z-index: 2;
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0px;
+        text-align: start;
+        background-color: transparent;
+        transform: none;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        // gradient scrim: hanya untuk keadaan tertutup, memudar saat dibuka
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          z-index: 0;
+          pointer-events: none;
+          background-image: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0) 28%,
+            rgba(0, 0, 0, 0.46) 60%,
+            rgba(0, 0, 0, 0.86) 86%,
+            rgba(0, 0, 0, 0.96) 100%
+          );
+          opacity: 1;
+          transition: opacity var(--transition);
+        }
+
+        > * {
+          position: relative;
+          z-index: 1;
+        }
+
+        // scrollbar tipis agar tidak memotong konten kartu
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+
+        &::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background-color: transparent;
+          margin: 12px 0px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 999px;
+          background-color: rgba(255, 255, 255, 0.35);
+          transition: var(--transition);
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background-color: var(--primary-color);
+        }
+      }
+
+      .portfolio__single-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex: 0 0 auto;
+      }
+
+      // logo mengisi posisi judul: tinggi tetap, lebar ikut rasio aslinya.
+      // kontras dijaga oleh overlay kartu yang selalu digelapkan,
+      // jadi logonya dibiarkan polos tanpa plat atau garis tepi.
+      .portfolio__single-logo {
+        position: relative;
+        display: block;
+        height: 36px;
+        width: calc(36px * var(--logo-ratio, 3.5));
+        max-width: 210px;
+        flex: 0 0 auto;
+        margin-bottom: 4px;
+
+        // logo hampir persegi butuh ruang lebih besar
+        &--lg {
+          height: 68px;
+          width: calc(68px * var(--logo-ratio, 3.5));
+          max-width: 250px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          min-height: 0px;
+        }
+      }
+
+      .portfolio__single-arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.32);
+        color: #ffffff;
+        font-size: 16px;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: var(--transition);
+
+        i {
+          font-size: inherit;
+          color: inherit;
+        }
+      }
+
+      // dorong blok teks ke bawah supaya head tetap di atas
+      .portfolio__single-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: auto;
+        padding-top: 20px;
+        flex: 0 0 auto;
+      }
+
+      // judul disembunyikan secara visual karena logo sudah mewakilinya,
+      // tapi tetap dibaca screen reader dan mesin pencari
+      .portfolio__single-title {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0px;
+        overflow: hidden;
+        white-space: nowrap;
+        clip: rect(0, 0, 0, 0);
+        clip-path: inset(50%);
+        border: 0px;
+      }
+
+      // deskripsi terlipat saat idle, terbuka penuh ketika hover
+      .portfolio__single-desc {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0px;
+        max-height: 0px;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.45s ease, opacity 0.35s ease;
+      }
+
+      .portfolio__single-metrics {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        max-height: 0px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        flex: 0 0 auto;
+        opacity: 0;
+        transform: translateY(12px);
+        transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.35s ease,
+          transform 0.35s ease;
+
+        li {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          gap: 16px;
+          padding-bottom: 12px;
+          border-bottom: 1px dashed rgba(255, 255, 255, 0.28);
+
+          &:last-child {
+            padding-bottom: 0px;
+            border-bottom: 0px;
+          }
+        }
+
+        .label {
+          color: rgba(255, 255, 255, 0.72);
+          font-size: 11px;
+          font-weight: 500;
+          line-height: 1.3;
+          letter-spacing: 0.07em;
+          text-transform: uppercase;
+        }
+
+        .value {
+          color: #ffffff;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 1;
+          white-space: nowrap;
+        }
+      }
+
+      &:hover {
+        .portfolio__single-media {
+          img {
+            transform: scale(1.05);
+          }
+
+          // saat dibuka: overlay hitam rata (warna tetap, bukan dari gambar)
+          &::after {
+            opacity: 1;
+          }
+        }
+
+        // dan gradientnya dimatikan
+        .portfolio__single-content::before {
+          opacity: 0;
+        }
+
+        .portfolio__single-body {
+          padding-top: 0px;
+        }
+
+        .portfolio__single-desc {
+          max-height: 420px;
+          opacity: 1;
+        }
+
+        // metrics sekarang dinamis (jumlah baris tidak tetap),
+        // jadi beri ruang lebih lega supaya semua baris ikut terbuka
+        .portfolio__single-metrics {
+          max-height: 480px;
+          padding-top: 18px;
+          opacity: 1;
+          transform: translateY(0px);
+        }
+
+        .portfolio__single-arrow {
+          opacity: 1;
+          transform: translateY(0px);
+          background-color: var(--primary-color);
+          border-color: var(--primary-color);
+          color: var(--black);
+        }
+      }
+
+      // perangkat sentuh tidak punya hover: tampilkan semua konten
+      @media (hover: none) {
+        // kartu selalu dalam keadaan "terbuka" di perangkat sentuh,
+        // jadi pakai overlay rata dan matikan gradient
+        .portfolio__single-media::after {
+          opacity: 1;
+        }
+
+        .portfolio__single-content::before {
+          opacity: 0;
+        }
+
+        .portfolio__single-body {
+          padding-top: 0px;
+        }
+
+        .portfolio__single-desc {
+          max-height: 420px;
+          opacity: 1;
+        }
+
+        .portfolio__single-metrics {
+          max-height: 480px;
+          padding-top: 18px;
+          opacity: 1;
+          transform: translateY(0px);
+        }
+
+        .portfolio__single-arrow {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+      }
+
+      @media only screen and (max-width: 575.98px) {
+        .portfolio__single-content {
+          padding: 16px;
+        }
+
+        .portfolio__single-media::after {
+          opacity: 1;
+        }
+
+        .portfolio__single-content::before {
+          opacity: 0;
+        }
+
+        .portfolio__single-logo {
+          height: 30px;
+          width: calc(30px * var(--logo-ratio, 3.5));
+          max-width: 160px;
+
+          &--lg {
+            height: 56px;
+            width: calc(56px * var(--logo-ratio, 3.5));
+            max-width: 190px;
+          }
+        }
+
+        .portfolio__single-arrow {
+          width: 38px;
+          height: 38px;
+          font-size: 14px;
+          opacity: 1;
+          transform: none;
+        }
+
+        .portfolio__single-desc {
+          max-height: none;
+          opacity: 1;
+          font-size: 13px;
+        }
+
+        .portfolio__single-metrics {
+          max-height: none;
+          opacity: 1;
+          transform: none;
+          gap: 8px;
+          padding-top: 14px;
+
+          li {
+            padding-bottom: 8px;
+          }
+
+          .value {
+            font-size: 17px;
+          }
+        }
+      }
+    }
+  }
+
+  // grid kartu: saat jumlah kartu ganjil di tablet (2 kolom),
+  // kartu terakhir pada baris kedua otomatis berada di tengah
+  .portfolio__cards {
+    justify-content: center;
   }
 
   .portfolio__single-active {
@@ -618,7 +1009,9 @@
       background-repeat: no-repeat;
       background-position-x: 75%;
       opacity: 0;
-      transition: opacity 0.3s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+      border-radius: 20px;
+      // fade-out instan: cegah glitch negatif saat cursor blend aktif lagi
+      transition: opacity 0s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
         -webkit-transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
       margin: -200px 0 0 -150px;
       overflow: hidden;
@@ -651,6 +1044,9 @@
 
         .offer-thumb-hover {
           opacity: 1;
+          // fade-in halus; saat unhover kembali ke rule dasar (opacity 0s)
+          transition: opacity 0.3s, transform 0.7s cubic-bezier(0.23, 1, 0.32, 1),
+            -webkit-transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
         }
       }
     }
@@ -1123,12 +1519,16 @@
 // 5.15 sponsor styles
 .sponsor {
   .sponsor__slider-item {
+    position: relative;
+    height: 65px;
     text-align: center;
+
     img {
+      width: 100%;
+      height: 100%;
       max-width: 100%;
-      height: auto;
-      margin-left: auto;
-      margin-right: auto;
+      object-fit: contain;
+      margin: 0px;
       opacity: 0.25;
       transition: var(--transition);
     }
@@ -1138,6 +1538,38 @@
     img {
       opacity: 1;
     }
+  }
+}
+
+// Home client logos strip: samakan bg dengan bg aset logo (#ef9559)
+.sponsor--clients {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 60px 0px;
+  border-radius: 20px;
+
+  // slide dibuat flex supaya logo dengan tinggi berbeda tetap sejajar tengah
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+  }
+
+  // Tinggi logo diatur per-logo lewat custom property inline --logo-height.
+  // Sebagian aset punya padding transparan besar (mis. nutrijell) atau kanvas
+  // kecil (mis. top-coffee), jadi ukuran visualnya perlu disamakan manual.
+  // Diatur lewat height (bukan transform: scale) agar tidak terpotong
+  // overflow slider.
+  .sponsor__slider-item {
+    width: 100%;
+    height: var(--logo-height, 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lines .line {
+    background-color: rgba(255, 255, 255, 0.14);
   }
 }
 

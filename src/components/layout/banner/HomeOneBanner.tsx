@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import banneronethumb from "public/images/banner/banner-one-thumb.png";
+import banneronethumb from "public/images/banner/hero.webp";
 import star from "public/images/star.png";
 import videoframe from "public/images/video-frame.png";
 import YoutubeEmbed from "@/components/youtube/YoutubeEmbed";
@@ -53,17 +53,17 @@ const HomeOneBanner = () => {
             <div className="col-12">
               <div className="banner__content">
                 <h1 className="text-uppercase text-start fw-9 mb-0 title-anim">
-                  We are
-                  <span className="text-stroke">creative</span>
+                  High Five
+                  <span className="text-stroke">Influencer</span>
                   <span className="interval">
-                    <i className="icon-arrow-top-right"></i> digital agency
+                    <i className="icon-arrow-top-right"></i> Marketing Agency
                   </span>
                 </h1>
                 <div className="banner__content-inner">
                   <p>
-                    We are a full-service website design, development and
-                    digital marketing company specializing in SEO, content
-                    marketing that grows brands.
+                    High Five helps brands grow through strategic influencer
+                    marketing campaigns, connecting them with the right creators
+                    to drive real impact.
                   </p>
                   <div className="cta section__content-cta">
                     <div className="single">
@@ -85,12 +85,16 @@ const HomeOneBanner = () => {
           alt="Image"
           className="banner-one-thumb d-none d-sm-block g-ban-one"
         />
+        <div
+          className="banner-one-thumb banner-one-thumb--overlay d-none d-sm-block g-ban-one"
+          aria-hidden="true"
+        />
         <Image src={star} alt="Image" className="star" />
-        <div className="banner-left-text banner-social-text d-none d-md-flex">
-          <Link href="mailto:info@xpovio.com">mail : info@xpovio.com</Link>
+        {/* <div className="banner-left-text banner-social-text d-none d-md-flex">
+          <Link href="mailto:info@xpovio.com">mail : info@highfive.com</Link>
           <Link href="tel:99-2158-003-6980">Call : +99 2158 003 6980</Link>
-        </div>
-        <div className="banner-right-text banner-social-text d-none d-md-flex">
+        </div> */}
+        {/* <div className="banner-right-text banner-social-text d-none d-md-flex">
           <Link href="https://www.instagram.com/" target="_blank">
             instagram
           </Link>
@@ -100,7 +104,7 @@ const HomeOneBanner = () => {
           <Link href="https://www.facebook.com/" target="_blank">
             facebook
           </Link>
-        </div>
+        </div> */}
         <button
           className="video-frame video-btn"
           onClick={() => setVideoActive(true)}

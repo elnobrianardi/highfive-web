@@ -7,7 +7,17 @@ import CtaTwo from "@/components/containers/service-details/CtaTwo";
 
 const ServiceDetails = () => {
   return (
-    <Layout header={2} footer={5} video={false}>
+    <Layout
+      header={2}
+      footer={5}
+      video={false}
+      seo={{
+        title: "Service Details",
+        canonicalPath: "/service-single",
+        description:
+          "Details on High Five's influencer marketing service offering, process, and deliverables.",
+      }}
+    >
       <ServiceDetailsBanner />
       <ServiceDetailsMain />
       <UxProcess />

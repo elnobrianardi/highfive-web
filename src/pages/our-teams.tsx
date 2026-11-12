@@ -5,7 +5,17 @@ import TeamMain from "@/components/containers/TeamMain";
 
 const OurTeams = () => {
   return (
-    <Layout header={2} footer={5} video={0}>
+    <Layout
+      header={2}
+      footer={5}
+      video={0}
+      seo={{
+        title: "Our Teams",
+        canonicalPath: "/our-teams",
+        description:
+          "Meet the High Five team of strategists, creators, and campaign managers behind our influencer marketing work.",
+      }}
+    >
       <CmnBanner title="Awesome Teams" navigation="Our Teams" />
       <TeamMain />
     </Layout>

@@ -1,0 +1,65 @@
+[
+  {
+    "title": "Nutrijell",
+    "description": "To boost awareness and premium appeal for Nutrijell Silky Pudding, we partnered with Geng Cendol (Nagita Slavina, Ashanty, Aurel Hermansyah, Nia Ramadhani, and more). Through celebrity meet-ups and home DIY activities, we created engaging content that amplified brand reach.",
+    "image": "/images/case-study/nutrijell.webp",
+    "logo": "/images/sponsor/nutrijell.webp",
+    "logoSize": "lg",
+    "metrics": [
+      {
+        "label": "KPI Views",
+        "value": "2.3M"
+      },
+      {
+        "label": "Total Views",
+        "value": "8.3M"
+      },
+      {
+        "label": "Achievement Rate",
+        "value": "360%"
+      }
+    ]
+  },
+  {
+    "title": "Kredivo",
+    "description": "To promote wise Buy-Now-Pay-Later use, we drove Kredivo’s #AndaiAndaPandai campaign—from key messaging to amplification via X Trending Topics and influencer collaborations, turning financial education into a relatable nationwide movement.",
+    "image": "/images/case-study/kredivo.webp",
+    "logo": "/images/sponsor/kredivo.png",
+    "logoSize": "sm",
+    "metrics": [
+      {
+        "label": "KPI Views",
+        "value": "50K"
+      },
+      {
+        "label": "Total Views",
+        "value": "100K"
+      },
+      {
+        "label": "Achievement Rate",
+        "value": "200%"
+      }
+    ]
+  },
+  {
+    "title": "Top Coffee",
+    "description": "To celebrate Ramadan, we launched the 'Doublicious Berkah' campaign (Double Kebaikan, Double Kemenangan), converting photo uploads into donated iftar packages. Partnering with rising influencers, we amplified the movement and spread the spirit of sharing nationwide.",
+    "image": "/images/case-study/top-coffee.webp",
+    "logo": "/images/sponsor/top-coffee.webp",
+    "logoSize": "lg",
+    "metrics": [
+      {
+        "label": "KPI Views",
+        "value": "3.3M"
+      },
+      {
+        "label": "Total Views",
+        "value": "23.2M"
+      },
+      {
+        "label": "Achievement Rate",
+        "value": "700%"
+      }
+    ]
+  }
+]

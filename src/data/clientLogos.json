@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Mandiri",
+    "logo": "/images/sponsor/mandiri.webp"
+  },
+  {
+    "name": "Lifebuoy",
+    "logo": "/images/sponsor/lifebuoy.png"
+  },
+  {
+    "name": "Nutrijell",
+    "logo": "/images/sponsor/nutrijell.png",
+    "height": 68
+  },
+  {
+    "name": "Rinso",
+    "logo": "/images/sponsor/rinso.webp",
+    "height": 65
+  },
+  {
+    "name": "Tiket.com",
+    "logo": "/images/sponsor/tiket.png"
+  },
+  {
+    "name": "Unilever",
+    "logo": "/images/sponsor/unilever.png",
+    "height": 68
+  },
+  {
+    "name": "Top Coffee",
+    "logo": "/images/sponsor/top-coffee.webp",
+    "height": 65
+  },
+  {
+    "name": "Kredivo",
+    "logo": "/images/sponsor/kredivo.png"
+  },
+  {
+    "name": "Walls",
+    "logo": "/images/sponsor/walls.svg"
+  },
+  {
+    "name": "Rexona",
+    "logo": "/images/sponsor/rexona.webp"
+  }
+]

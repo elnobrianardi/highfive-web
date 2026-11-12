@@ -15,6 +15,7 @@ import FooterThree from "./footer/FooterThree";
 import FooterFour from "./footer/FooterFour";
 import FooterFive from "./footer/FooterFive";
 import VideoModal from "./VideoModal";
+import Seo, { SeoProps } from "./Seo";
 import ScrollProgressBtn from "./ScrollProgressBtn";
 import CustomCursor from "./CustomCursor";
 import SplitType from "split-type";
@@ -26,6 +27,8 @@ type LayoutProps = {
   header?: React.ReactNode;
   footer?: React.ReactNode;
   video?: React.ReactNode;
+  /** Per-page SEO overrides. Title/description/canonical are required by `Seo`. */
+  seo?: SeoProps;
 };
 
 const Layout = ({
@@ -35,6 +38,7 @@ const Layout = ({
   handleMouseEnterTitle,
   handleMouseLeaveTitle,
   video,
+  seo,
 }: LayoutProps) => {
 
   // tilt effect
@@ -177,16 +181,11 @@ const Layout = ({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link
           rel="shortcut icon"
-          href="/images/favicon.png"
+          href="/images/logo-white.jpeg"
           type="image/x-icon"
         />
-        <title>Xpovio | Digital Agency Creative Portfolio Template</title>
-        <meta name="keywords" content="creative, agency, portfolio" />
-        <meta
-          name="description"
-          content="Digital Agency Creative Portfolio Template"
-        />
       </Head>
+      <Seo {...seo} />
       <div className={combinedClassName}>
         {header === 1 && (
           <Header
