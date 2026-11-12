@@ -148,38 +148,42 @@ const CaseStudyCardCompact = ({
       </div>
 
       <div className="study-card__body">
-        {/* judul tetap ada untuk pembaca layar dan SEO */}
-        <h3 className="study-card__title">{study.title}</h3>
+        {/* wrapper dalam: konten di-scroll di dalam padding, jadi jarak atas/bawah
+            tetap sama walau kontennya bergerak (bukan cuma di awal/akhir) */}
+        <div className="study-card__scroll-inner">
+          {/* judul tetap ada untuk pembaca layar dan SEO */}
+          <h3 className="study-card__title">{study.title}</h3>
 
-        {study.description ? (
-          <p className="study-card__desc" id={descId} ref={descRef}>
-            {study.description}
-          </p>
-        ) : null}
+          {study.description ? (
+            <p className="study-card__desc" id={descId} ref={descRef}>
+              {study.description}
+            </p>
+          ) : null}
 
-        {study.description && clamped ? (
-          <button
-            type="button"
-            className="study-card__toggle"
-            aria-expanded={expanded}
-            aria-controls={descId}
-            onClick={handleToggle}
-          >
-            <span>{expanded ? "Show Less" : "Read More"}</span>
-            <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
-          </button>
-        ) : null}
+          {study.description && clamped ? (
+            <button
+              type="button"
+              className="study-card__toggle"
+              aria-expanded={expanded}
+              aria-controls={descId}
+              onClick={handleToggle}
+            >
+              <span>{expanded ? "Show Less" : "Read More"}</span>
+              <i className="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+          ) : null}
 
-        {study.metrics?.length ? (
-          <ul className="study-card__metrics">
-            {study.metrics.map((metric, index) => (
-              <li key={`${study.title}-metric-${index}`}>
-                <span className="label">{metric.label}</span>
-                <strong className="value">{metric.value}</strong>
-              </li>
-            ))}
-          </ul>
-        ) : null}
+          {study.metrics?.length ? (
+            <ul className="study-card__metrics">
+              {study.metrics.map((metric, index) => (
+                <li key={`${study.title}-metric-${index}`}>
+                  <span className="label">{metric.label}</span>
+                  <strong className="value">{metric.value}</strong>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
       </div>
     </article>
   );

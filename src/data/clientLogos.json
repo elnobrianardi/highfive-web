@@ -30,5 +30,17 @@
     "name": "Top Coffee",
     "logo": "/images/sponsor/top-coffee.webp",
     "height": 65
+  },
+  {
+    "name": "Kredivo",
+    "logo": "/images/sponsor/kredivo.png"
+  },
+  {
+    "name": "Walls",
+    "logo": "/images/sponsor/walls.svg"
+  },
+  {
+    "name": "Rexona",
+    "logo": "/images/sponsor/rexona.webp"
   }
 ]

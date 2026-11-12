@@ -56,13 +56,9 @@ const HighFiveService = () => {
               <div className="offer__cta-single fade-top">
                 <span className="sub-title">
                   01
-                  <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="#">
                     Influencers Marketing Campaign
-                    <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                  </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
                   <Image src={serviceThumb} alt="Influencers Marketing Campaign" />
@@ -71,13 +67,9 @@ const HighFiveService = () => {
               <div className="offer__cta-single fade-top">
                 <span className="sub-title">
                   02
-                  <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="#">
                     Hyperlocal Creator Campaign
-                    <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                  </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
                   <Image src={serviceThumbTwo} alt="Hyperlocal Creator Campaign" />
@@ -86,13 +78,9 @@ const HighFiveService = () => {
               <div className="offer__cta-single fade-top">
                 <span className="sub-title">
                   03
-                  <i className="fa-solid fa-arrow-right"></i>
                 </span>
                 <h2>
-                  <Link href="#">
                     Brand Placement
-                    <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                  </Link>
                 </h2>
                 <div className="offer-thumb-hover d-none d-md-block">
                   <Image src={serviceThumbThree} alt="Brand Placement" />
