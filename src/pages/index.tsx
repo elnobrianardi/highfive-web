@@ -10,6 +10,7 @@ import CaseStudyHome from "@/components/containers/home/CaseStudyHome";
 // import ContactInfo from "@/components/containers/home/ContactInfo";
 import site from "@/data/site.json";
 import caseStudies from "@/data/caseStudies.json";
+import { SITE_URL, absoluteUrl } from "@/lib/siteUrl";
 
 type CaseStudy = {
   title: string;
@@ -19,8 +20,8 @@ type CaseStudy = {
   metrics?: { label: string; value: string }[];
 };
 
-const organizationId = `${site.url}/#organization`;
-const websiteId = `${site.url}/#website`;
+const organizationId = `${SITE_URL}/#organization`;
+const websiteId = `${SITE_URL}/#website`;
 
 const organizationJsonLd: Record<string, unknown> = {
   "@context": "https://schema.org",
@@ -28,9 +29,9 @@ const organizationJsonLd: Record<string, unknown> = {
   "@id": organizationId,
   name: site.name,
   legalName: site.legalName,
-  url: site.url,
-  logo: `${site.url}${site.logo}`,
-  image: `${site.url}${site.defaultOgImage}`,
+  url: SITE_URL,
+  logo: absoluteUrl(site.logo),
+  image: absoluteUrl(site.defaultOgImage),
   description: site.description,
   email: site.email,
   knowsAbout: site.knowsAbout,
@@ -72,7 +73,7 @@ const websiteJsonLd: Record<string, unknown> = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": websiteId,
-  url: site.url,
+  url: SITE_URL,
   name: site.name,
   description: site.description,
   publisher: { "@id": organizationId },
@@ -82,7 +83,7 @@ const websiteJsonLd: Record<string, unknown> = {
 const servicesJsonLd: Record<string, unknown> = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${site.url}/#service`,
+  "@id": `${SITE_URL}/#service`,
   serviceType: "Influencer Marketing",
   name: "Influencer Marketing Services",
   description:
@@ -113,7 +114,7 @@ const caseStudyJsonLd = (caseStudies as CaseStudy[]).map(
     "@type": "CreativeWork",
     name: `${item.title} Influencer Marketing Campaign`,
     description: item.description,
-    image: `${site.url}${item.image}`,
+    image: absoluteUrl(item.image),
     about: { "@type": "Brand", name: item.title },
     creator: { "@id": organizationId },
     additionalProperty: (item.metrics || []).map((metric) => ({

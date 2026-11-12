@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 import site from "@/data/site.json";
+import { SITE_URL, absoluteUrl, IS_PREVIEW_DEPLOYMENT } from "@/lib/siteUrl";
 
 export type SeoProps = {
   /** Full page title. When omitted, the site default is used. */
@@ -21,12 +22,6 @@ export type SeoProps = {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 
-const absoluteUrl = (value: string): string =>
-  value.startsWith("http") ? value : `${site.url}${value}`;
-
-const absolutePath = (path: string): string =>
-  path.startsWith("http") ? path : `${site.url}${path}`;
-
 const Seo = ({
   title,
   description,
@@ -40,10 +35,15 @@ const Seo = ({
 
   const pageTitle = title ? `${title} | ${site.name}` : `${site.name} | Influencer Marketing Agency`;
   const pageDescription = description || site.description;
-  const path = canonicalPath || (router.asPath === "/" ? "/" : router.asPath.split("?")[0].split("#")[0]);
-  const canonical = absolutePath(path);
+  const path =
+    canonicalPath ||
+    (router.asPath === "/" ? "/" : router.asPath.split("?")[0].split("#")[0]);
+  const canonical = path.startsWith("http") ? path : `${SITE_URL}${path}`;
   const ogImage = absoluteUrl(image || site.defaultOgImage);
   const keywordList = Array.from(new Set([...(keywords || []), ...site.keywords])).join(", ");
+
+  // Never let preview/staging deployments get indexed alongside production.
+  const shouldNoindex = noindex || IS_PREVIEW_DEPLOYMENT;
 
   const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
@@ -53,7 +53,14 @@ const Seo = ({
       <meta name="description" content={pageDescription} />
       <meta name="keywords" content={keywordList} />
       <link rel="canonical" href={canonical} />
-      <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"} />
+      <meta
+        name="robots"
+        content={
+          shouldNoindex
+            ? "noindex, nofollow"
+            : "index, follow, max-image-preview:large"
+        }
+      />
 
       {/* Open Graph */}
       <meta property="og:type" content="website" />
