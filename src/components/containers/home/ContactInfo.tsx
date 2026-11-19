@@ -29,15 +29,15 @@ const ContactInfo = () => {
                   <div className="cta-two__cta section__content-cta">
                     <div className="single">
                       <p className="primary-text">Email</p>
-                      <Link href="mailto:hello@highfive.co.id">hello@highfive.co.id</Link>
+                      <Link href="mailto:dinda@wearehighfive.id">dinda@wearehighfive.id</Link>
                     </div>
                     <div className="single">
                       <p className="primary-text">Social Media</p>
                       <div className="social" style={{ justifyContent: "flex-start" }}>
-                        <Link href="https://www.instagram.com/" target="_blank" style={{ color: "#6b6b6b", backgroundColor: "transparent" }}>
+                        <Link href="https://www.instagram.com/wearehighfive.id/" target="_blank" style={{ color: "#6b6b6b", backgroundColor: "transparent" }}>
                           <i className="fa-brands fa-instagram"></i>
                         </Link>
-                        <Link href="https://www.linkedin.com/" target="_blank" style={{ color: "#6b6b6b", backgroundColor: "transparent" }}>
+                        <Link href="https://www.linkedin.com/company/high-five-influencers/" target="_blank" style={{ color: "#6b6b6b", backgroundColor: "transparent" }}>
                           <i className="fa-brands fa-linkedin-in"></i>
                         </Link>
                       </div>

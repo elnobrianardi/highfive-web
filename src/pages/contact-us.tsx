@@ -13,7 +13,7 @@ const ContactUs = () => {
         title: "Contact Us",
         canonicalPath: "/contact-us",
         description:
-          "Get in touch with High Five to plan your next influencer marketing campaign. Email hello@highfive.co.id.",
+          "Get in touch with High Five to plan your next influencer marketing campaign. Email dinda@wearehighfive.id.",
       }}
     >
       <CmnBanner title="Contact Us" navigation="Contact Us" />

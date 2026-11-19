@@ -90,21 +90,18 @@ const HomeOneBanner = () => {
           aria-hidden="true"
         />
         <Image src={star} alt="Image" className="star" />
-        {/* <div className="banner-left-text banner-social-text d-none d-md-flex">
-          <Link href="mailto:info@xpovio.com">mail : info@highfive.com</Link>
-          <Link href="tel:99-2158-003-6980">Call : +99 2158 003 6980</Link>
-        </div> */}
-        {/* <div className="banner-right-text banner-social-text d-none d-md-flex">
-          <Link href="https://www.instagram.com/" target="_blank">
+        <div className="banner-left-text banner-social-text d-none d-md-flex">
+          <Link href="mailto:info@xpovio.com">mail : dinda@wearehighfive.id</Link>
+          <Link href="tel:99-2158-003-6980">Call : 082260640501</Link>
+        </div>
+        <div className="banner-right-text banner-social-text d-none d-md-flex">
+          <Link href="https://www.instagram.com/wearehighfive.id/" target="_blank">
             instagram
           </Link>
-          <Link href="https://www.pinterest.com/" target="_blank">
+          <Link href="https://www.linkedin.com/company/high-five-influencers/" target="_blank">
             Linkedin
           </Link>
-          <Link href="https://www.facebook.com/" target="_blank">
-            facebook
-          </Link>
-        </div> */}
+        </div>
         {/* <button
           className="video-frame video-btn"
           onClick={() => setVideoActive(true)}

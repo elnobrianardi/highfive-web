@@ -147,7 +147,7 @@ const HomeThreeBanner = () => {
           <Link href="https://www.pinterest.com/" target="_blank">
             <i className="fa-brands fa-linkedin-in"></i>
           </Link>
-          <Link href="https://www.instagram.com/" target="_blank">
+          <Link href="https://www.instagram.com/wearehighfive.id/" target="_blank">
             <i className="fa-brands fa-instagram"></i>
           </Link>
         </div>

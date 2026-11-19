@@ -54,7 +54,7 @@ const HeaderThree = ({ openNav, handleNav, setOpenNav }: HeaderProps) => {
                       <li className="navbar__item nav-fade">
                         <Link href="tel:406-555-0120">
                           <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                          (406) 555-0120
+                          082260640501
                         </Link>
                       </li>
                       <li className="navbar__item nav-fade">

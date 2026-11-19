@@ -68,30 +68,30 @@ const Offcanvas = ({ openNav, setOpenNav }: HeaderProps) => {
                     Case Study
                   </Link>
                 </li>
-                {/* <li className="navbar__item nav-fade">
+                <li className="navbar__item nav-fade">
                   <Link href="/#contact" onClick={closeNav}>
                     Contact
                   </Link>
-                </li> */}
+                </li>
               </ul>
             </div>
           </div>
-          {/* <div className="offcanvas-menu__social nav-fade" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "16px" }}>
+          <div className="offcanvas-menu__social nav-fade" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "16px" }}>
             <Link
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/wearehighfive.id/"
               target="_blank"
               aria-label="share us on instagram"
             >
               <i className="fa-brands fa-instagram"></i>
             </Link>
             <Link
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/company/high-five-influencers/"
               target="_blank"
               aria-label="share us on linkedin"
             >
               <i className="fa-brands fa-linkedin-in"></i>
             </Link>
-          </div> */}
+          </div>
         </nav>
       </div>
     </div>

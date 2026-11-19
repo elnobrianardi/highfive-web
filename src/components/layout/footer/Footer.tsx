@@ -12,33 +12,42 @@ const Footer = () => {
     >
       <div className="container">
         <div className="row gaper">
-          <div className="col-12 col-lg-5 col-xl-6">
-            <div className="footer__single">
+          <div className="col-12">
+            <div className="footer__single footer__single--full">
               <Link href="/" className="title-anim">
                 <Image src={logo} alt="Image" width={100} style={{ borderRadius: "20%"}}/>
               </Link>
-              {/* <div className="footer__single-meta">
+              <div className="footer__single-meta">
                 <Link
                   href="https://www.google.com/maps/d/viewer?mid=1UZ57Drfs3SGrTgh6mrYjQktu6uY&hl=en_US&ll=18.672105000000013%2C105.68673800000003&z=17"
                   target="_blank"
+                  className="footer__single-meta-item footer__single-meta-item--address"
                 >
                   <i className="fa-sharp fa-solid fa-location-dot"></i>
-                  901 N Pitt Str., Suite 170 Alexandria, USA
+                  BMS Complex,
+                  Jl. Timbul No.2 1, RT.9/RW.9, Pejaten Barat, Pasar Minggu,
+                  Kota Jakarta Selatan, DKI Jakarta 12510
                 </Link>
-                <Link href="tel:406-555-0120">
+                <Link
+                  href="tel:082260640501"
+                  className="footer__single-meta-item"
+                >
                   <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                  (406) 555-0120
+                  082260640501
                 </Link>
-                <Link href="mailto:info@highfive.com">
+                <Link
+                  href="mailto:Dinda@wearehighfive.id"
+                  className="footer__single-meta-item"
+                >
                   <i className="fa-sharp fa-solid fa-envelope"></i>
-                  info@highfive.com
+                  Dinda@wearehighfive.id
                 </Link>
-              </div> */}
-              {/* <div className="footer__cta text-start">
+              </div>
+              <div className="footer__cta text-start">
                 <Link href="contact-us" className="btn btn--secondary">
                   book a call now
                 </Link>
-              </div> */}
+              </div>
             </div>
           </div>
           {/* <div className="col-12 col-lg-2 col-xl-2">
@@ -107,22 +116,34 @@ const Footer = () => {
                     </p>
                   </div>
                 </div>
-                {/* <div className="col-12 col-lg-4">
+                <div className="col-12 col-lg-4">
                   <div className="social justify-content-center justify-content-lg-end">
-                    <Link href="https://www.facebook.com/" target="_blank">
+                    <Link
+                      href="https://www.facebook.com/wearehighfive.id/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="High Five on Facebook"
+                    >
                       <i className="fa-brands fa-facebook-f"></i>
                     </Link>
-                    <Link href="https://www.twitter.com/" target="_blank">
-                      <i className="fa-brands fa-twitter"></i>
-                    </Link>
-                    <Link href="https://www.pinterest.com/" target="_blank">
+                    <Link
+                      href="https://www.linkedin.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="High Five on LinkedIn"
+                    >
                       <i className="fa-brands fa-linkedin-in"></i>
                     </Link>
-                    <Link href="https://www.instagram.com/" target="_blank">
+                    <Link
+                      href="https://www.instagram.com/wearehighfive.id/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="High Five on Instagram"
+                    >
                       <i className="fa-brands fa-instagram"></i>
                     </Link>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>

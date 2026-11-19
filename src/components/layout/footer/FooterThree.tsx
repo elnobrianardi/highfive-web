@@ -26,13 +26,17 @@ const FooterThree = () => {
                       target="_blank"
                     >
                       <i className="fa-sharp fa-solid fa-location-dot"></i>
-                      901 N Pitt Str., Suite 170 Alexandria, USA
+                      BMS Complex,
+Jl. Timbul No.2 1, RT.9/RW.9,
+Pejaten Barat, Pasar Minggu,
+Kota Jakarta Selatan,
+DKI Jakarta 12510
                     </Link>
                   </li>
                   <li>
                     <Link href="tel:406-555-0120">
                       <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                      (406) 555-0120
+                      082260640501
                     </Link>
                   </li>
                   <li>
@@ -73,7 +77,7 @@ const FooterThree = () => {
                   <li>
                     <Link href="tel:406-555-0120">
                       <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                      (406) 555-0120
+                      082260640501
                     </Link>
                   </li>
                   <li>
@@ -110,7 +114,7 @@ const FooterThree = () => {
                   <li>
                     <Link href="tel:406-555-0120">
                       <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                      (406) 555-0120
+                      082260640501
                     </Link>
                   </li>
                   <li>
@@ -151,7 +155,7 @@ const FooterThree = () => {
                   <li>
                     <Link href="tel:406-555-0120">
                       <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                      (406) 555-0120
+                      082260640501
                     </Link>
                   </li>
                   <li>
@@ -188,7 +192,7 @@ const FooterThree = () => {
                   <li>
                     <Link href="tel:406-555-0120">
                       <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                      (406) 555-0120
+                      082260640501
                     </Link>
                   </li>
                   <li>

@@ -160,7 +160,7 @@ const FooterTwo = () => {
                   <i className="fa-brands fa-linkedin-in"></i>
                   <span>Linkedin</span>
                 </Link>
-                <Link href="https://www.instagram.com/" target="_blank">
+                <Link href="https://www.instagram.com/wearehighfive.id/" target="_blank">
                   <i className="fa-brands fa-instagram"></i>
                   <span>Instagram</span>
                 </Link>
@@ -175,11 +175,15 @@ const FooterTwo = () => {
                   target="_blank"
                 >
                   <i className="fa-sharp fa-solid fa-location-dot"></i>
-                  901 N Pitt Str., Suite 170 Alexandria, USA
+                  BMS Complex,
+Jl. Timbul No.2 1, RT.9/RW.9,
+Pejaten Barat, Pasar Minggu,
+Kota Jakarta Selatan,
+DKI Jakarta 12510
                 </Link>
                 <Link href="tel:406-555-0120">
                   <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                  (406) 555-0120
+                  082260640501
                 </Link>
                 <Link href="mailto:info@xpovio.com">
                   <i className="fa-sharp fa-solid fa-envelope"></i>

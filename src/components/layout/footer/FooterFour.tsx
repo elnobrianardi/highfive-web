@@ -49,7 +49,7 @@ const FooterFour = () => {
           <div className="col-12 col-lg-6">
             <ul className="justify-content-center justify-content-lg-start">
               <li>
-                <Link href="https://www.linkedin.com/" target="_blank">
+                <Link href="https://www.linkedin.com/company/high-five-influencers/" target="_blank">
                   Linkedin
                 </Link>
               </li>
