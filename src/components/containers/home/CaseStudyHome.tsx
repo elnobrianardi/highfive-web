@@ -103,7 +103,7 @@ const CaseStudyCard = ({ study }: { study: CaseStudy }) => {
 
 const CaseStudyHome = () => {
   return (
-    <section className="section portfolio pb-0 fade-wrapper position-relative" id="case-study">
+    <section className="section portfolio pb-5 fade-wrapper position-relative" id="case-study">
       <div className="portfolio__text-slider-w">
         <Swiper
           slidesPerView="auto"

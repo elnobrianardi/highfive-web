@@ -7,7 +7,6 @@ import HomeSponsor from "@/components/containers/home/HomeSponsor";
 import HighFiveService from "@/components/containers/home/HighFiveService";
 import HighFiveUSP from "@/components/containers/home/HighFiveUSP";
 import CaseStudyHome from "@/components/containers/home/CaseStudyHome";
-import ContactInfo from "@/components/containers/home/ContactInfo";
 import site from "@/data/site.json";
 import caseStudies from "@/data/caseStudies.json";
 import { SITE_URL, absoluteUrl } from "@/lib/siteUrl";
@@ -151,7 +150,6 @@ const Home = () => {
       <HighFiveService />
       <HighFiveUSP />
       <CaseStudyHome />
-      <ContactInfo />
     </Layout>
   );
 };
