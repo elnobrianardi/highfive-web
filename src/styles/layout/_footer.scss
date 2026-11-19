@@ -40,7 +40,7 @@
 
     .footer__single-meta {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 2fr, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px 40px;
       width: 100%;
 
@@ -58,6 +58,31 @@
 
       .footer__single-meta-item--address {
         align-items: flex-start;
+      }
+
+      .footer__single-meta-item--contact {
+        flex-direction: column;
+        gap: 12px;
+
+        a {
+          max-width: none;
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          color: var(--white);
+          line-height: 28px;
+          font-weight: 500;
+
+          i {
+            flex-shrink: 0;
+            margin-top: 6px;
+            line-height: inherit;
+          }
+
+          &:hover {
+            color: var(--primary-color);
+          }
+        }
       }
     }
 

@@ -19,7 +19,7 @@ const Footer = () => {
               </Link>
               <div className="footer__single-meta">
                 <Link
-                  href="https://www.google.com/maps/d/viewer?mid=1UZ57Drfs3SGrTgh6mrYjQktu6uY&hl=en_US&ll=18.672105000000013%2C105.68673800000003&z=17"
+                  href="https://maps.app.goo.gl/6rKedhnWYXQMZvS39"
                   target="_blank"
                   className="footer__single-meta-item footer__single-meta-item--address"
                 >
@@ -28,20 +28,16 @@ const Footer = () => {
                   Jl. Timbul No.2 1, RT.9/RW.9, Pejaten Barat, Pasar Minggu,
                   Kota Jakarta Selatan, DKI Jakarta 12510
                 </Link>
-                <Link
-                  href="tel:082260640501"
-                  className="footer__single-meta-item"
-                >
-                  <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                  082260640501
-                </Link>
-                <Link
-                  href="mailto:Dinda@wearehighfive.id"
-                  className="footer__single-meta-item"
-                >
-                  <i className="fa-sharp fa-solid fa-envelope"></i>
-                  Dinda@wearehighfive.id
-                </Link>
+                <div className="footer__single-meta-item footer__single-meta-item--contact">
+                  <Link href="tel:082260640501">
+                    <i className="fa-sharp fa-solid fa-phone-volume"></i>
+                    082260640501
+                  </Link>
+                  <Link href="mailto:Dinda@wearehighfive.id">
+                    <i className="fa-sharp fa-solid fa-envelope"></i>
+                    Dinda@wearehighfive.id
+                  </Link>
+                </div>
               </div>
               <div className="footer__cta text-start">
                 <Link href="contact-us" className="btn btn--secondary">
