@@ -114,16 +114,16 @@ const Footer = () => {
                 </div>
                 <div className="col-12 col-lg-4">
                   <div className="social justify-content-center justify-content-lg-end">
-                    <Link
+                    {/* <Link
                       href="https://www.facebook.com/wearehighfive.id/"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="High Five on Facebook"
                     >
                       <i className="fa-brands fa-facebook-f"></i>
-                    </Link>
+                    </Link> */}
                     <Link
-                      href="https://www.linkedin.com/"
+                      href="https://www.linkedin.com/company/high-five-influencers//"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="High Five on LinkedIn"

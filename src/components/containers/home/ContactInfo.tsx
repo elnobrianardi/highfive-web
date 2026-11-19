@@ -37,7 +37,7 @@ const ContactInfo = () => {
                         <Link href="https://www.instagram.com/wearehighfive.id/" target="_blank" style={{ color: "#6b6b6b", backgroundColor: "transparent" }}>
                           <i className="fa-brands fa-instagram"></i>
                         </Link>
-                        <Link href="https://www.linkedin.com/company/high-five-influencers/" target="_blank" style={{ color: "#6b6b6b", backgroundColor: "transparent" }}>
+                        <Link href="https://www.linkedin.com/company/high-five-influencers//company/high-five-influencers/" target="_blank" style={{ color: "#6b6b6b", backgroundColor: "transparent" }}>
                           <i className="fa-brands fa-linkedin-in"></i>
                         </Link>
                       </div>

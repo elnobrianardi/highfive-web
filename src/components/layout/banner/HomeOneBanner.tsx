@@ -98,7 +98,7 @@ const HomeOneBanner = () => {
           <Link href="https://www.instagram.com/wearehighfive.id/" target="_blank">
             instagram
           </Link>
-          <Link href="https://www.linkedin.com/company/high-five-influencers/" target="_blank">
+          <Link href="https://www.linkedin.com/company/high-five-influencers//company/high-five-influencers/" target="_blank">
             Linkedin
           </Link>
         </div>
