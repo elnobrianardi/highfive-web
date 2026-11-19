@@ -335,8 +335,8 @@
 
     a {
       background-color: transparent;
-      border: 1px solid #888888;
-      color: #888888;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
       &:hover {
         border: 1px solid var(--primary-color);
         color: var(--white);

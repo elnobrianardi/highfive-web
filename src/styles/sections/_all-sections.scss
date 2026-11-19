@@ -1855,6 +1855,16 @@
     display: inline-block;
   }
 
+  .sub-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    i {
+      transform: rotate(-45deg);
+    }
+  }
+
   h2,
   h5 {
     text-transform: capitalize;
@@ -2481,8 +2491,8 @@
         gap: 14px;
 
         a {
-          border: 1px solid #888888;
-          color: #888888;
+          border: 1px solid var(--primary-color);
+          color: var(--primary-color);
           background-color: transparent;
           &:hover {
             color: var(--white);
@@ -3480,14 +3490,14 @@
       }
       a {
         @include box(30px);
-        border: 1px solid #414141;
-        color: #d9d9d9;
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
         font-size: 12px;
         background-color: transparent;
         &:hover {
-          color: var(--primary-color);
+          color: var(--white);
           border: 1px solid var(--primary-color);
-          background-color: var(--white);
+          background-color: var(--primary-color);
         }
       }
     }
